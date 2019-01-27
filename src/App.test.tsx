@@ -9,7 +9,7 @@ import { App } from "./App";
 // keep in mind you will need to edit this mock response with the appropriate mock API data
 // so that your components recieve the data they expect.
 beforeAll(() => {
-  global.fetch = jest.fn().mockImplementation((url, options) => {
+  window.fetch = jest.fn().mockImplementation((url, options) => {
     return new Promise((resolve, reject) => {
       resolve({
         Id: "123",
