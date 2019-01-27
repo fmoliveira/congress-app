@@ -10,10 +10,10 @@ const WrappedLayer = styled.div`
   background-color: #f6f8f9;
 `
 
-const Container = ({ children }) => <WrappedLayer>{children}</WrappedLayer>
+export const Container = ({ children }) => (
+  <WrappedLayer>{children}</WrappedLayer>
+)
 
 Container.propTypes = {
   children: node
 }
-
-export default Container

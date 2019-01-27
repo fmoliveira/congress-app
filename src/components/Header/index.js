@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import Logo from "../Logo"
+import { Logo } from ".."
 
 const HeaderContainer = styled.header`
   background-color: #222;
@@ -15,11 +15,9 @@ const Title = styled.h1`
   font-size: 1.5em;
 `
 
-const Header = () => (
+export const Header = () => (
   <HeaderContainer>
     <Logo />
     <Title>React Programming Exercise</Title>
   </HeaderContainer>
 )
-
-export default Header
