@@ -7,6 +7,4 @@ const WrappedImage = styled.img`
   height: 80px;
 `
 
-const Logo = () => <WrappedImage src={logoImage} alt="Ubiquity 6" />
-
-export default Logo
+export const Logo = () => <WrappedImage src={logoImage} alt="Ubiquity 6" />

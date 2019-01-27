@@ -2,8 +2,7 @@ import React from "react"
 import { node } from "prop-types"
 import styled, { createGlobalStyle } from "styled-components"
 
-import Header from "../Header"
-import Container from "../Container"
+import { Container, Header } from ".."
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,7 +16,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `
 
-const Layout = ({ children }) => (
+export const Layout = ({ children }) => (
   <Wrapper>
     <GlobalStyle />
     <Header />
@@ -28,5 +27,3 @@ const Layout = ({ children }) => (
 Layout.propTypes = {
   children: node
 }
-
-export default Layout
