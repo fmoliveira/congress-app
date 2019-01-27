@@ -10,7 +10,7 @@ The package upath@1.0.4 from original CRA's version in our dependency tree on ya
 
 ## Create React App
 
-Originally on version 1.1.4, it has been updated to the latest version ^2.1.3 which has Babel 7 under the hood, allowing TypeScript to run alongside with Babel so we have TS linting on Webpack. :)
+Updated from version 1.1.4 to ^1.1.5. Currently it's not possible to update to the current version ^2.1.3 because of incompatibility with Node.js 6.
 
 ## React
 
