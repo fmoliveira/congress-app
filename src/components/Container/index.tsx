@@ -7,10 +7,10 @@ const WrappedLayer = styled.div`
   width: 1280px;
 `;
 
-type Props = {
+interface IProps {
   children: React.ReactNode;
-};
+}
 
-export const Container = ({ children }: Props) => (
+export const Container = ({ children }: IProps) => (
   <WrappedLayer>{children}</WrappedLayer>
 );

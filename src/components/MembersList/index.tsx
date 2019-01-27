@@ -10,16 +10,16 @@ const mockData = [
   { id: 5, name: "Jobs" }
 ];
 
-type Props = {
+interface IProps {
   data: [
     {
       id: number;
       name: string;
     }
   ];
-};
+}
 
-export const MembersList = ({ data }: Props) => (
+export const MembersList = ({ data }: IProps) => (
   <div>
     {data.map(i => (
       <ListItem key={i.id} {...i} />

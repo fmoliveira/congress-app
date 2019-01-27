@@ -7,12 +7,12 @@ const ItemWrapper = styled.div`
   background-color: #ffffff;
 `;
 
-type Props = {
+interface IProps {
   id: number;
   name: string;
-};
+}
 
-export const ListItem = ({ id, name }: Props) => (
+export const ListItem = ({ id, name }: IProps) => (
   <ItemWrapper>
     #{id} - {name}
   </ItemWrapper>
