@@ -1,7 +1,9 @@
 import React from "react"
 
-import { Layout } from "./components"
+import { Layout, MembersList } from "./components"
 
 export const App = () => (
-  <Layout>{/* Your app should render this part of the page. */}</Layout>
+  <Layout>
+    <MembersList />
+  </Layout>
 )
