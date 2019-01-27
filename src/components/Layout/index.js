@@ -1,27 +1,22 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { node } from "prop-types"
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
 import { Container, Header } from ".."
 
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: sans-serif;
+    background-color: #f6f8f9;
   }
 `
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`
-
 export const Layout = ({ children }) => (
-  <Wrapper>
+  <Fragment>
     <GlobalStyle />
     <Header />
     <Container>{children}</Container>
-  </Wrapper>
+  </Fragment>
 )
 
 Layout.propTypes = {
