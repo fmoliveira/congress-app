@@ -9,11 +9,12 @@ const ItemWrapper = styled.div`
 
 interface IProps {
   id: number
-  name: string
+  firstName: string
+  lastName: string
 }
 
-export const ListItem = ({ id, name }: IProps) => (
+export const ListItem = ({ id, firstName, lastName }: IProps) => (
   <ItemWrapper>
-    #{id} - {name}
+    #{id} - {firstName} {lastName}
   </ItemWrapper>
 )
