@@ -1,32 +1,50 @@
-import React from "react";
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
 
+import { listMembers } from "./actions";
 import { ListItem } from "./components";
 
-const mockData = [
-  { id: 1, name: "Alexander" },
-  { id: 2, name: "Graham" },
-  { id: 3, name: "Bell" },
-  { id: 4, name: "Steve" },
-  { id: 5, name: "Jobs" }
-];
-
-interface IProps {
-  data: [
-    {
-      id: number;
-      name: string;
-    }
-  ];
+interface IStateProps {
+  members: any[];
 }
 
-export const MembersList = ({ data }: IProps) => (
-  <div>
-    {data.map(i => (
-      <ListItem key={i.id} {...i} />
-    ))}
-  </div>
-);
+interface IDispatchProps {
+  listMembers: (session: number, chamber: string) => void;
+}
 
-MembersList.defaultProps = {
-  data: mockData
+type Props = IStateProps & IDispatchProps;
+
+class MembersList extends PureComponent<Props> {
+  public static defaultProps = {
+    members: []
+  };
+
+  public componentDidMount() {
+    this.props.listMembers(115, "senate");
+  }
+
+  public render() {
+    const { members } = this.props;
+
+    return (
+      <div>
+        {members.map((i: any) => (
+          <ListItem key={i.id} {...i} />
+        ))}
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state: any): IStateProps => ({
+  members: state.membersListStore.members
+});
+
+const mapDispatchToProps: IDispatchProps = {
+  listMembers
 };
+
+export default connect<IStateProps, IDispatchProps>(
+  mapStateToProps,
+  mapDispatchToProps
+)(MembersList);

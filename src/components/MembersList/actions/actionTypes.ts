@@ -1,0 +1,5 @@
+export enum ActionTypes {
+  LIST_MEMBERS_REQUEST,
+  LIST_MEMBERS_SUCCESS,
+  LIST_MEMBERS_FAILURE
+}
