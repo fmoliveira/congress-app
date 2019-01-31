@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
 import { listMembers } from "./actions";
-import { ListItem } from "./components";
+import { ListItem } from "./ListItem";
 
 interface IStateProps {
   members: any[];
