@@ -1,30 +1,30 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
+import React, { PureComponent } from "react"
+import { connect } from "react-redux"
 
-import { listMembers } from "./actions";
-import { ListItem } from "./ListItem";
+import { listMembers } from "./actions"
+import { ListItem } from "./ListItem"
 
 interface IStateProps {
-  members: any[];
+  members: any[]
 }
 
 interface IDispatchProps {
-  listMembers: (session: number, chamber: string) => void;
+  listMembers: (session: number, chamber: string) => void
 }
 
-type Props = IStateProps & IDispatchProps;
+type Props = IStateProps & IDispatchProps
 
 class MembersList extends PureComponent<Props> {
   public static defaultProps = {
     members: []
-  };
+  }
 
   public componentDidMount() {
-    this.props.listMembers(115, "senate");
+    this.props.listMembers(115, "senate")
   }
 
   public render() {
-    const { members } = this.props;
+    const { members } = this.props
 
     return (
       <div>
@@ -32,19 +32,19 @@ class MembersList extends PureComponent<Props> {
           <ListItem key={i.id} {...i} />
         ))}
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state: any): IStateProps => ({
   members: state.membersListStore.members
-});
+})
 
 const mapDispatchToProps: IDispatchProps = {
   listMembers
-};
+}
 
 export default connect<IStateProps, IDispatchProps>(
   mapStateToProps,
   mapDispatchToProps
-)(MembersList);
+)(MembersList)

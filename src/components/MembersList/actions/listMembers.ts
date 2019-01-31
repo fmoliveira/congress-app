@@ -1,20 +1,18 @@
-import Redux from "redux";
+import Redux from "redux"
 
-import { request } from "../../../utils";
-import { ActionTypes } from "./index";
+import { request } from "../../../utils"
+import { ActionTypes } from "./index"
 
 export function listMembers(session: number, chamber: string) {
   return async (dispatch: Redux.Dispatch) => {
-    dispatch(listMembersRequest(session, chamber));
+    dispatch(listMembersRequest(session, chamber))
     try {
-      const data: any = await request(`${session}/${chamber}/members.json`);
-      dispatch(
-        listMembersSuccess(session, chamber, data.results[0].members, 0)
-      );
+      const data: any = await request(`${session}/${chamber}/members.json`)
+      dispatch(listMembersSuccess(session, chamber, data.results[0].members, 0))
     } catch {
-      dispatch(listMembersFailure());
+      dispatch(listMembersFailure())
     }
-  };
+  }
 }
 
 function listMembersRequest(session: number, chamber: string) {
@@ -22,7 +20,7 @@ function listMembersRequest(session: number, chamber: string) {
     chamber,
     session,
     type: ActionTypes.LIST_MEMBERS_REQUEST
-  };
+  }
 }
 
 function listMembersSuccess(
@@ -37,11 +35,11 @@ function listMembersSuccess(
     numResults,
     session,
     type: ActionTypes.LIST_MEMBERS_SUCCESS
-  };
+  }
 }
 
 function listMembersFailure() {
   return {
     type: ActionTypes.LIST_MEMBERS_FAILURE
-  };
+  }
 }
