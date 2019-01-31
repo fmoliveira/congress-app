@@ -1,17 +1,17 @@
-import React, { Fragment } from "react";
-import { createGlobalStyle } from "styled-components";
+import React, { Fragment } from "react"
+import { createGlobalStyle } from "styled-components"
 
-import { Container, Header } from "..";
+import { Container, Header } from ".."
 
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: sans-serif;
     background-color: #f6f8f9;
   }
-`;
+`
 
 interface IProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const Layout = ({ children }: IProps) => (
@@ -20,4 +20,4 @@ export const Layout = ({ children }: IProps) => (
     <Header />
     <Container>{children}</Container>
   </Fragment>
-);
+)

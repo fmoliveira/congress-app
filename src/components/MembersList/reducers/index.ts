@@ -1,18 +1,18 @@
-import { ActionTypes } from "../actions";
+import { ActionTypes } from "../actions"
 
 const defaultState = {
   chamber: "",
   congress: "",
   members: [],
   numResults: 0
-};
+}
 
 interface IAction {
-  type: ActionTypes;
-  chamber: "";
-  congress: "";
-  members: [];
-  numResults: 0;
+  type: ActionTypes
+  chamber: ""
+  congress: ""
+  members: []
+  numResults: 0
 }
 
 export function membersListStore(state = defaultState, action: IAction) {
@@ -21,7 +21,7 @@ export function membersListStore(state = defaultState, action: IAction) {
       return {
         ...state,
         members: action.members
-      };
+      }
   }
-  return defaultState;
+  return defaultState
 }
