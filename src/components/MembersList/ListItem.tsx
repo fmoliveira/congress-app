@@ -9,8 +9,8 @@ const ItemWrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr repeat(4, 1fr);
   align-items: center;
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.75rem;
+  padding: 0.5rem;
   background-color: #ffffff;
 `
 
