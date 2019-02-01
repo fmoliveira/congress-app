@@ -1,9 +1,9 @@
 const defaultState = {}
 
 export enum RequestStatusType {
-  loading = "REQUEST",
-  success = "SUCESS",
-  error = "FAILURE"
+  Loading = "REQUEST",
+  Success = "SUCCESS",
+  Error = "FAILURE"
 }
 
 interface IAction {
