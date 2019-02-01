@@ -1,3 +1,4 @@
+import { requestStatusSelector } from "../../../reducers/requestStatus"
 import { ActionTypes } from "../actions"
 
 const defaultState = {
@@ -25,3 +26,6 @@ export function membersListStore(state = defaultState, action: IAction) {
   }
   return defaultState
 }
+
+export const membersListStatusSelector = (state: any) =>
+  requestStatusSelector(state, "LIST_MEMBERS")
