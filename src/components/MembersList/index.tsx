@@ -2,6 +2,7 @@ import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 
 import { listMembers } from "./actions"
+import { ListHeader } from "./ListHeader"
 import { ListItem } from "./ListItem"
 
 interface IStateProps {
@@ -28,6 +29,7 @@ class MembersList extends PureComponent<Props> {
 
     return (
       <div>
+        <ListHeader />
         {members.map((i: any) => (
           <ListItem key={i.id} {...i} />
         ))}
