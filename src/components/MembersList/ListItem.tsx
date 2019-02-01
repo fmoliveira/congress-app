@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import { PartyName } from "../index"
+import { SocialNetworkLinks } from "../SocialNetworkLinks"
 import { Avatar } from "./Avatar"
 
 const ItemWrapper = styled.div`
@@ -32,6 +33,9 @@ interface IProps {
   party: string
   state: string
   nextElection: string
+  facebookAccount: string
+  twitterAccount: string
+  youtubeAccount: string
 }
 
 export const ListItem = ({
@@ -39,7 +43,10 @@ export const ListItem = ({
   lastName,
   party,
   state,
-  nextElection
+  nextElection,
+  twitterAccount,
+  facebookAccount,
+  youtubeAccount
 }: IProps) => (
   <ItemWrapper>
     <AvatarWrapper>
@@ -53,6 +60,12 @@ export const ListItem = ({
     </Text>
     <Text>{state}</Text>
     <Text>{nextElection}</Text>
-    <Text>Social Networks</Text>
+    <Text>
+      <SocialNetworkLinks
+        facebookAccount={facebookAccount}
+        twitterAccount={twitterAccount}
+        youtubeAccount={youtubeAccount}
+      />
+    </Text>
   </ItemWrapper>
 )
