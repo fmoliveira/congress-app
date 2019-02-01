@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import { RequestStatusType } from "../../reducers/requestStatus"
 import { listMembers } from "./actions"
-import { membersListStatusSelector } from "./reducers"
+import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
 import { ListHeader } from "./ListHeader"
 import { ListItem } from "./ListItem"
@@ -44,8 +44,8 @@ class MembersList extends PureComponent<Props> {
 }
 
 const mapStateToProps = (state: any): IStateProps => ({
-  members: state.membersListStore.members,
-  status: membersListStatusSelector(state)
+  members: membersListSelector(state),
+  status: listMembersStatusSelector(state)
 })
 
 const mapDispatchToProps: IDispatchProps = {
