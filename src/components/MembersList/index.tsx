@@ -30,16 +30,20 @@ class MembersList extends PureComponent<Props> {
   }
 
   public render() {
-    const { status, members } = this.props
+    const { status } = this.props
 
     return (
       <div>
         <ListHeader />
         {status === RequestStatusType.Loading && <SkeletonList />}
-        {status === RequestStatusType.Success &&
-          members.map((i: any) => <ListItem key={i.id} {...i} />)}
+        {status === RequestStatusType.Success && this.renderList()}
       </div>
     )
+  }
+
+  private renderList() {
+    const { members } = this.props
+    return members.map((i: any) => <ListItem key={i.id} {...i} />)
   }
 }
 
