@@ -1,5 +1,6 @@
 export * from "./Avatar"
 export * from "./Container"
+export * from "./ErrorMessage"
 export * from "./Header"
 export * from "./Layout"
 export * from "./LoadingSkeleton"

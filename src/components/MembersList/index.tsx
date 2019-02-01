@@ -5,6 +5,7 @@ import { RequestStatusType } from "../../reducers/requestStatus"
 import { listMembers } from "./actions"
 import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
+import { ErrorMessage } from "../index"
 import { ListHeader } from "./ListHeader"
 import { ListItem } from "./ListItem"
 import { SkeletonList } from "./SkeletonList"
@@ -26,7 +27,7 @@ class MembersList extends PureComponent<Props> {
   }
 
   public componentDidMount() {
-    this.props.listMembers(115, "senate")
+    this.listMembers()
   }
 
   public render() {
@@ -34,11 +35,18 @@ class MembersList extends PureComponent<Props> {
 
     return (
       <div>
-        <ListHeader />
+        {status !== RequestStatusType.Error && <ListHeader />}
+        {status === RequestStatusType.Error && (
+          <ErrorMessage retry={this.listMembers} />
+        )}
         {status === RequestStatusType.Loading && <SkeletonList />}
         {status === RequestStatusType.Success && this.renderList()}
       </div>
     )
+  }
+
+  private listMembers = () => {
+    this.props.listMembers(115, "senate")
   }
 
   private renderList() {
