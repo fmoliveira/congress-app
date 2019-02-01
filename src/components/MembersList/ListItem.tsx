@@ -16,7 +16,7 @@ const AvatarWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  img {
+  * {
     margin-right: 0.5em;
   }
 `
@@ -26,6 +26,7 @@ const Text = styled.div`
 `
 
 interface IProps {
+  isLoading?: boolean
   firstName: string
   lastName: string
   gender: string
