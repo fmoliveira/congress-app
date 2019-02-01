@@ -16,6 +16,8 @@ interface IAction {
   numResults: 0
 }
 
+const getStore = (rootState: any) => rootState.membersListStore
+
 export function membersListStore(state = defaultState, action: IAction) {
   switch (action.type) {
     case ActionTypes.LIST_MEMBERS_SUCCESS:
@@ -27,5 +29,7 @@ export function membersListStore(state = defaultState, action: IAction) {
   return defaultState
 }
 
-export const membersListStatusSelector = (state: any) =>
+export const membersListSelector = (state: any) => getStore(state).members
+
+export const listMembersStatusSelector = (state: any) =>
   requestStatusSelector(state, "LIST_MEMBERS")
