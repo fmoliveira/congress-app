@@ -5,8 +5,8 @@ const HeaderWrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr repeat(4, 1fr);
   align-items: center;
-  margin: 1rem;
-  padding: 0 1rem;
+  margin: 0.75rem;
+  padding: 0 0.5rem;
   font-size: 0.7em;
   text-transform: uppercase;
   color: #a6adb4;
