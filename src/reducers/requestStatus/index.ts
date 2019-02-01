@@ -1,6 +1,6 @@
 const defaultState = {}
 
-enum RequestStatusType {
+export enum RequestStatusType {
   loading = "REQUEST",
   success = "SUCESS",
   error = "FAILURE"
@@ -28,12 +28,7 @@ export function requestStatusStore(state = defaultState, action: IAction) {
   }
 }
 
-export function isLoadingSelector(state: object, request: string) {
+export function requestStatusSelector(state: object, request: string) {
   const store = getStore(state)
-  return store[request] === RequestStatusType.loading
-}
-
-export function hasErrorSelector(state: any, request: string) {
-  const store = getStore(state)
-  return store[request] === RequestStatusType.error
+  return store[request]
 }
