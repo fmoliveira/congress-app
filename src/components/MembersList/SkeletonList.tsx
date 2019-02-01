@@ -37,7 +37,7 @@ export const SkeletonList = () => (
       <ItemWrapper key={i}>
         <AvatarWrapper>
           <CircleSkeleton />
-          <TextSkeleton>Senator Full Name</TextSkeleton>
+          <TextSkeleton>Member Name</TextSkeleton>
         </AvatarWrapper>
         <div>
           <TextSkeleton>Party Name</TextSkeleton>
