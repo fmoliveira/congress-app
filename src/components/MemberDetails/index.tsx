@@ -6,8 +6,10 @@ import { getMemberDetails } from "./actions"
 import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 
 interface IOwnProps {
-  params: {
-    memberId: string
+  match: {
+    params: {
+      memberId: string
+    }
   }
 }
 
@@ -24,12 +26,12 @@ type Props = IOwnProps & IStateProps & IDispatchProps
 
 class MemberDetails extends PureComponent<Props> {
   public render() {
-    return <div>Member Details</div>
+    return <div>Member Details #{this.props.match.params.memberId}</div>
   }
 }
 
 const mapStateToProps = (state: any, props: any): IStateProps => ({
-  details: memberDetailsByIdSelector(state, props.params.memberId),
+  details: memberDetailsByIdSelector(state, props.match.params.memberId),
   status: getDetailsStatusSelector(state)
 })
 
