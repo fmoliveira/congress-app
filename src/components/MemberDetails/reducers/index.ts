@@ -11,7 +11,7 @@ interface IAction {
   details: any
 }
 
-const getStore = (rootState: any) => rootState.membersDetailsStore
+const getStore = (rootState: any) => rootState.membersDetailsStore || {}
 
 export function membersDetailsStore(state = defaultState, action: IAction) {
   const { type, memberId, details } = action
@@ -31,7 +31,8 @@ export function membersDetailsStore(state = defaultState, action: IAction) {
   }
 }
 
-export const membersDetailsSelector = (state: any) => getStore(state).details
+export const membersDetailsSelector = (state: any) =>
+  getStore(state).details || {}
 
 export const memberDetailsByIdSelector = (state: any, memberId: string) =>
   membersDetailsSelector(state)[memberId]
