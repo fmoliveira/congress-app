@@ -27,7 +27,7 @@ const SocialNetworksWrapper = styled.div`
   }
 `
 
-const SKELETON_ITEMS_AMOUNT = 20
+const SKELETON_ITEMS_AMOUNT = 15
 
 const items = new Array(SKELETON_ITEMS_AMOUNT).fill(0).map((_, idx) => idx)
 

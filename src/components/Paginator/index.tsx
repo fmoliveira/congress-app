@@ -1,0 +1,93 @@
+import React, { useState } from "react"
+import styled from "styled-components"
+
+import nextIcon from "./next.svg"
+import previousIcon from "./previous.svg"
+
+const DEFAULT_ROWS_PER_PAGE = 15
+
+interface IProps {
+  children: (i: any) => React.ReactNode
+  data: any[]
+}
+
+const NavigationWrapper = styled.div`
+  margin: 1em;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  align-items: center;
+  text-align: center;
+  font-size: 0.8em;
+  color: #555555;
+`
+
+const NavigationButton = styled.button`
+  padding: 0.75em 1em;
+  border-radius: 20px;
+  color: #ffffff;
+  background-color: #7220d9;
+  border: none;
+  box-shadow: 1px 1px 10px #b89fd6;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #8c45e5;
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+  }
+`
+
+const NavigationIcon = styled.img`
+  width: 16px;
+  height: 16px;
+`
+
+export const Paginator = ({ children, data }: IProps) => {
+  const itemsPerPage = DEFAULT_ROWS_PER_PAGE
+  const totalItems = data.length
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+
+  const [currentPage, setPage] = useState(1)
+  const beginIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = beginIndex + itemsPerPage
+  const displayedItems = data.slice(beginIndex, endIndex)
+  const displayedLength = displayedItems.length
+
+  const hasPrevious = currentPage > 1
+  const goToPrevious = hasPrevious ? () => setPage(currentPage - 1) : undefined
+
+  const hasNext = currentPage < totalPages
+  const goToNext = hasNext ? () => setPage(currentPage + 1) : undefined
+
+  return (
+    <div>
+      {displayedItems.map(children)}
+      <NavigationWrapper>
+        <div>
+          {hasPrevious && (
+            <NavigationButton onClick={goToPrevious}>
+              <NavigationIcon src={previousIcon} alt="Previous page" />
+            </NavigationButton>
+          )}
+        </div>
+        <div>
+          <p>
+            Page {currentPage} of {totalPages}
+          </p>
+          <p>
+            Displaying {displayedLength} members of {totalItems}
+          </p>
+        </div>
+        <div>
+          {hasNext && (
+            <NavigationButton onClick={goToNext}>
+              <NavigationIcon src={nextIcon} alt="Next page" />
+            </NavigationButton>
+          )}
+        </div>
+      </NavigationWrapper>
+    </div>
+  )
+}

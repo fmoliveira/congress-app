@@ -5,6 +5,7 @@ export * from "./Header"
 export * from "./Layout"
 export * from "./LoadingSkeleton"
 export * from "./Logo"
+export * from "./Paginator"
 export * from "./PartyName"
 export * from "./SocialNetworkLinks"
 
