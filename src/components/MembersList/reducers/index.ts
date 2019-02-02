@@ -18,7 +18,7 @@ interface IAction {
   numResults: 0
 }
 
-const getStore = (rootState: any) => rootState.membersListStore
+const getStore = (rootState: any) => rootState.membersListStore || {}
 
 export function membersListStore(state = defaultState, action: IAction) {
   switch (action.type) {
@@ -33,7 +33,7 @@ export function membersListStore(state = defaultState, action: IAction) {
   }
 }
 
-export const membersListSelector = (state: any) => getStore(state).members
+export const membersListSelector = (state: any) => getStore(state).members || []
 
 export const listMembersStatusSelector = (state: any) =>
   requestStatusSelector(state, "LIST_MEMBERS")
