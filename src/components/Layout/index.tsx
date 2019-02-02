@@ -1,13 +1,19 @@
 import React, { Fragment } from "react"
-import { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 
-import { Container, Header } from ".."
+import { Header } from ".."
 
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: sans-serif;
     background-color: #f6f8f9;
   }
+`
+
+const Container = styled.div`
+  margin: 0 auto;
+  padding: 1em;
+  width: 1280px;
 `
 
 interface IProps {
