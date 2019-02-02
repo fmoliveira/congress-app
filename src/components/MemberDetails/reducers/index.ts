@@ -25,8 +25,10 @@ export function membersDetailsStore(state = defaultState, action: IAction) {
           [memberId]: details
         }
       }
+
+    default:
+      return state
   }
-  return defaultState
 }
 
 export const membersDetailsSelector = (state: any) => getStore(state).details
