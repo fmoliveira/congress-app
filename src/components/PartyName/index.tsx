@@ -10,5 +10,5 @@ interface IProps {
 
 export const PartyName = ({ id = "" }: IProps) => {
   const initial = id.toUpperCase()
-  return PartiesList[initial]
+  return PartiesList[initial] || initial
 }
