@@ -5,11 +5,12 @@ import { Button } from "../index"
 import nextIcon from "./next.svg"
 import previousIcon from "./previous.svg"
 
-const DEFAULT_ROWS_PER_PAGE = 15
+const DEFAULT_ROWS_PER_PAGE = 30
 
 interface IProps {
   children: (i: any) => React.ReactNode
   data: any[]
+  onPageChanged?: () => void
 }
 
 const NavigationWrapper = styled.div`
@@ -27,22 +28,31 @@ const NavigationIcon = styled.img`
   height: 16px;
 `
 
-export const Paginator = ({ children, data }: IProps) => {
+export const Paginator = ({ children, data, onPageChanged }: IProps) => {
   const itemsPerPage = DEFAULT_ROWS_PER_PAGE
   const totalItems = data.length
   const totalPages = Math.ceil(totalItems / itemsPerPage)
 
   const [currentPage, setPage] = useState(1)
+  const changeToPage = (page: number) => {
+    setPage(page)
+    if (onPageChanged) {
+      onPageChanged()
+    }
+  }
+
   const beginIndex = (currentPage - 1) * itemsPerPage
   const endIndex = beginIndex + itemsPerPage
   const displayedItems = data.slice(beginIndex, endIndex)
   const displayedLength = displayedItems.length
 
   const hasPrevious = currentPage > 1
-  const goToPrevious = hasPrevious ? () => setPage(currentPage - 1) : undefined
+  const goToPrevious = hasPrevious
+    ? () => changeToPage(currentPage - 1)
+    : undefined
 
   const hasNext = currentPage < totalPages
-  const goToNext = hasNext ? () => setPage(currentPage + 1) : undefined
+  const goToNext = hasNext ? () => changeToPage(currentPage + 1) : undefined
 
   return (
     <div>

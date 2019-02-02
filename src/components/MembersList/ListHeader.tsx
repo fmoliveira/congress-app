@@ -7,6 +7,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   margin: 0.75rem;
   padding: 0 0.5rem;
+  padding-top: 0.5em;
   font-size: 0.7em;
   text-transform: uppercase;
   color: #a6adb4;
