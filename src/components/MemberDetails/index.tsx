@@ -1,13 +1,26 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
+import styled from "styled-components"
 
 import { RequestStatusType } from "../../reducers/requestStatus"
 import { memberInfoByIdSelector } from "../MembersList/reducers"
 import { getMemberDetails } from "./actions"
 import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 
-import { News } from "../index"
+import { Map, News } from "../index"
 import { ListItem } from "../MembersList/ListItem"
+
+const Columns = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  & > * {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+  }
+`
 
 interface IOwnProps {
   match: {
@@ -41,9 +54,10 @@ class MemberDetails extends PureComponent<Props> {
       <div>
         <p>Member Details #{this.props.match.params.memberId}</p>
         <ListItem {...info} />
-        <div>
+        <Columns>
           <News feed={details.rssUrl} />
-        </div>
+          <Map address={details.office} state={details.state} />
+        </Columns>
       </div>
     )
   }
