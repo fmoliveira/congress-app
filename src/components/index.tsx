@@ -12,5 +12,8 @@ export * from "./Paginator"
 export * from "./PartyName"
 export * from "./SocialNetworkLinks"
 
+import MemberDetails from "./MemberDetails"
+export { MemberDetails }
+
 import MembersList from "./MembersList"
 export { MembersList }
