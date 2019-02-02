@@ -10,6 +10,19 @@ const ItemWrapper = styled.div`
   margin: 0.75rem;
   padding: 0.5rem;
   background-color: #ffffff;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #e7e9ef;
+  }
+
+  &:active {
+    background-color: #e2e5ef;
+
+    & > * {
+      transform: translate(1px, 1px);
+    }
+  }
 `
 
 const AvatarWrapper = styled.div`
