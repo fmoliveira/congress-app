@@ -15,10 +15,12 @@ const Columns = styled.div`
   flex-direction: row;
 
   & > * {
+    width: 50%:
     flex: 1;
     display: flex;
     flex-direction: column;
     height: 350px;
+    overflow: hidden;
   }
 `
 

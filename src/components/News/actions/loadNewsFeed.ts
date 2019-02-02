@@ -26,8 +26,12 @@ function loadNewsFeedRequest(memberId: string) {
 }
 
 function loadNewsFeedSuccess(memberId: string, feed: any[]) {
+  const keyedFeed = feed.map((i, idx) => ({
+    key: idx,
+    ...i
+  }))
   return {
-    feed,
+    feed: keyedFeed,
     memberId,
     type: ActionTypes.LOAD_NEWS_FEED_SUCCESS
   }

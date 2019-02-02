@@ -20,6 +20,7 @@ const Container = styled.div`
   margin-top: 0.5em;
   padding: 0.5em;
   background-color: #ffffff;
+  overflow-y: auto;
 `
 
 export const Box = ({ title, children }: IProps) => (
