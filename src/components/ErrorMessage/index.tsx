@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
+import { Button } from "../index"
 import plug from "./plug.svg"
 
 interface IProps {
@@ -18,25 +19,6 @@ const ErrorImage = styled.img`
   height: auto;
 `
 
-const RetryButton = styled.button`
-  margin: 1em;
-  padding: 0.75em 1em;
-  border-radius: 20px;
-  color: #ffffff;
-  background-color: #7220d9;
-  border: none;
-  box-shadow: 1px 1px 10px #b89fd6;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #8c45e5;
-  }
-
-  &:active {
-    transform: translate(1px, 1px);
-  }
-`
-
 export const ErrorMessage = ({ retry }: IProps) => (
   <MessageWrapper>
     <ErrorImage src={plug} alt="Something is off" />
@@ -44,7 +26,7 @@ export const ErrorMessage = ({ retry }: IProps) => (
     <p>Failed to get information of the congress members.</p>
     <p>Please check your internet connection and try again.</p>
     <div>
-      <RetryButton onClick={retry}>Try again</RetryButton>
+      <Button onClick={retry}>Try again</Button>
     </div>
   </MessageWrapper>
 )
