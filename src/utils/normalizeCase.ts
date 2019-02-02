@@ -1,4 +1,4 @@
-import camelCase from "lodash.camelcase"
+import { camelCase } from "lodash"
 
 export function normalizeCase(anything: any): any {
   if (Array.isArray(anything)) {
