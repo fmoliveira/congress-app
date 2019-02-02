@@ -6,6 +6,7 @@ import { memberInfoByIdSelector } from "../MembersList/reducers"
 import { getMemberDetails } from "./actions"
 import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 
+import { News } from "../index"
 import { ListItem } from "../MembersList/ListItem"
 
 interface IOwnProps {
@@ -34,12 +35,15 @@ class MemberDetails extends PureComponent<Props> {
   }
 
   public render() {
-    const { info } = this.props
+    const { details = {}, info } = this.props
 
     return (
       <div>
         <p>Member Details #{this.props.match.params.memberId}</p>
         <ListItem {...info} />
+        <div>
+          <News feed={details.rssUrl} />
+        </div>
       </div>
     )
   }
