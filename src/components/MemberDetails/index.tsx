@@ -48,15 +48,22 @@ class MemberDetails extends PureComponent<Props> {
   }
 
   public render() {
-    const { details = {}, info } = this.props
+    const {
+      details: { rssUrl = null, roles = [] } = {},
+      info,
+      match: {
+        params: { memberId }
+      }
+    } = this.props
+    const [currentRole = {}] = roles
 
     return (
       <div>
-        <p>Member Details #{this.props.match.params.memberId}</p>
+        <p>Member Details #{memberId}</p>
         <ListItem {...info} />
         <Columns>
-          <News feed={details.rssUrl} />
-          <Map address={details.office} state={details.state} />
+          <News memberId={memberId} feedUrl={rssUrl} />
+          <Map address={currentRole.office} state={currentRole.state} />
         </Columns>
       </div>
     )
