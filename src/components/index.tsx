@@ -12,6 +12,7 @@ export * from "./NotFound"
 export * from "./Paginator"
 export * from "./PartyName"
 export * from "./SocialNetworkLinks"
+export * from "./Text"
 
 import MemberDetails from "./MemberDetails"
 export { MemberDetails }
