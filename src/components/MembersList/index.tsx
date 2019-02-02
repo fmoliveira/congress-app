@@ -5,7 +5,7 @@ import { RequestStatusType } from "../../reducers/requestStatus"
 import { listMembers } from "./actions"
 import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
-import { ErrorMessage } from "../index"
+import { ErrorMessage, Paginator } from "../index"
 import { ListHeader } from "./ListHeader"
 import { ListItem } from "./ListItem"
 import { SkeletonList } from "./SkeletonList"
@@ -31,7 +31,7 @@ class MembersList extends PureComponent<Props> {
   }
 
   public render() {
-    const { status } = this.props
+    const { members, status } = this.props
 
     return (
       <div>
@@ -40,18 +40,17 @@ class MembersList extends PureComponent<Props> {
           <ErrorMessage retry={this.listMembers} />
         )}
         {status === RequestStatusType.Loading && <SkeletonList />}
-        {status === RequestStatusType.Success && this.renderList()}
+        {status === RequestStatusType.Success && (
+          <Paginator data={members}>
+            {i => <ListItem key={i.id} {...i} />}
+          </Paginator>
+        )}
       </div>
     )
   }
 
   private listMembers = () => {
     this.props.listMembers(115, "senate")
-  }
-
-  private renderList() {
-    const { members } = this.props
-    return members.map((i: any) => <ListItem key={i.id} {...i} />)
   }
 }
 
