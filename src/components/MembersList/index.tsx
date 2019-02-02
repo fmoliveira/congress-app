@@ -26,6 +26,8 @@ class MembersList extends PureComponent<Props> {
     members: []
   }
 
+  private membersListRef = React.createRef<HTMLDivElement>()
+
   public componentDidMount() {
     this.listMembers()
   }
@@ -34,14 +36,14 @@ class MembersList extends PureComponent<Props> {
     const { members, status } = this.props
 
     return (
-      <div>
+      <div ref={this.membersListRef}>
         {status !== RequestStatusType.Error && <ListHeader />}
         {status === RequestStatusType.Error && (
           <ErrorMessage retry={this.listMembers} />
         )}
         {status === RequestStatusType.Loading && <SkeletonList />}
         {status === RequestStatusType.Success && (
-          <Paginator data={members}>
+          <Paginator data={members} onPageChanged={this.scrollToTop}>
             {i => <ListItem key={i.id} {...i} />}
           </Paginator>
         )}
@@ -51,6 +53,15 @@ class MembersList extends PureComponent<Props> {
 
   private listMembers = () => {
     this.props.listMembers(115, "senate")
+  }
+
+  private scrollToTop = () => {
+    if (this.membersListRef.current) {
+      this.membersListRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      })
+    }
   }
 }
 
