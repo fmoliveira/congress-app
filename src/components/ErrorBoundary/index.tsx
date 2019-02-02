@@ -33,7 +33,7 @@ const ErrorMessage = ({ clearError }: IProps) => (
       <ErrorImage src={bug} alt="Error" />
     </ImageWrapper>
     <h2>Bugsieesss</h2>
-    <p>Oh no, there is nothing I could do to prevent this error!</p>
+    <p>Pardon sir, there was nothing I could do to prevent this error!</p>
     <p>But someone skilled enough will assist you soon!</p>
     <div>
       <LinkButton to="/" onClick={clearError}>
