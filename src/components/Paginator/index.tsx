@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
+import { Button } from "../index"
 import nextIcon from "./next.svg"
 import previousIcon from "./previous.svg"
 
@@ -19,24 +20,6 @@ const NavigationWrapper = styled.div`
   text-align: center;
   font-size: 0.8em;
   color: #555555;
-`
-
-const NavigationButton = styled.button`
-  padding: 0.75em 1em;
-  border-radius: 20px;
-  color: #ffffff;
-  background-color: #7220d9;
-  border: none;
-  box-shadow: 1px 1px 10px #b89fd6;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #8c45e5;
-  }
-
-  &:active {
-    transform: translate(1px, 1px);
-  }
 `
 
 const NavigationIcon = styled.img`
@@ -67,9 +50,9 @@ export const Paginator = ({ children, data }: IProps) => {
       <NavigationWrapper>
         <div>
           {hasPrevious && (
-            <NavigationButton onClick={goToPrevious}>
+            <Button onClick={goToPrevious}>
               <NavigationIcon src={previousIcon} alt="Previous page" />
-            </NavigationButton>
+            </Button>
           )}
         </div>
         <div>
@@ -82,9 +65,9 @@ export const Paginator = ({ children, data }: IProps) => {
         </div>
         <div>
           {hasNext && (
-            <NavigationButton onClick={goToNext}>
+            <Button onClick={goToNext}>
               <NavigationIcon src={nextIcon} alt="Next page" />
-            </NavigationButton>
+            </Button>
           )}
         </div>
       </NavigationWrapper>
