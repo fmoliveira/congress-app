@@ -27,8 +27,10 @@ export function membersListStore(state = defaultState, action: IAction) {
         ...state,
         members: orderBy(action.members, ["firstName", "lastName"])
       }
+
+    default:
+      return state
   }
-  return defaultState
 }
 
 export const membersListSelector = (state: any) => getStore(state).members
