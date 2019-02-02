@@ -35,3 +35,6 @@ export const membersListSelector = (state: any) => getStore(state).members
 
 export const listMembersStatusSelector = (state: any) =>
   requestStatusSelector(state, "LIST_MEMBERS")
+
+export const memberInfoByIdSelector = (state: any, memberId: string) =>
+  membersListSelector(state).find((i: any) => i.id === memberId)
