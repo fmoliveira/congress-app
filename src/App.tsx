@@ -2,7 +2,7 @@ import React from "react"
 import { Provider } from "react-redux"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-import { Layout, MembersList, NotFound } from "./components"
+import { Layout, MemberDetails, MembersList, NotFound } from "./components"
 
 import { configureStore } from "./config"
 const store = configureStore()
@@ -14,6 +14,7 @@ export const App = () => (
         <Switch>
           <Route exact={true} path="/" component={MembersList} />
           <Route path="/list" component={MembersList} />
+          <Route path="/members/:memberId" component={MemberDetails} />
           <Route component={NotFound} />
         </Switch>
       </Layout>

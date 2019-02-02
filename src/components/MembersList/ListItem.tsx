@@ -1,15 +1,18 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 import { Avatar, PartyName, SocialNetworkLinks } from "../index"
 
-const ItemWrapper = styled.div`
+const WrapperLink = styled(Link)`
   display: grid;
   grid-template-columns: 2fr repeat(4, 1fr);
   align-items: center;
   margin: 0.75rem;
   padding: 0.5rem;
   background-color: #ffffff;
+  color: inherit;
+  text-decoration: none;
 
   &:hover {
     cursor: pointer;
@@ -40,6 +43,7 @@ const Text = styled.div`
 
 interface IProps {
   isLoading?: boolean
+  id: string
   firstName: string
   lastName: string
   gender: string
@@ -52,6 +56,7 @@ interface IProps {
 }
 
 export const ListItem = ({
+  id,
   firstName,
   lastName,
   gender,
@@ -62,7 +67,7 @@ export const ListItem = ({
   facebookAccount,
   youtubeAccount
 }: IProps) => (
-  <ItemWrapper>
+  <WrapperLink to={`members/${id}`}>
     <AvatarWrapper>
       <Avatar
         gender={gender}
@@ -85,5 +90,5 @@ export const ListItem = ({
         youtubeAccount={youtubeAccount}
       />
     </Text>
-  </ItemWrapper>
+  </WrapperLink>
 )
