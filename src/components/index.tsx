@@ -1,6 +1,7 @@
 export * from "./Avatar"
 export * from "./Button"
 export * from "./Container"
+export * from "./ErrorBoundary"
 export * from "./ErrorMessage"
 export * from "./Header"
 export * from "./Layout"
