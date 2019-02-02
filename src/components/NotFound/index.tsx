@@ -1,12 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Button } from "../index"
-import plug from "./plug.svg"
-
-interface IProps {
-  retry: () => void
-}
+import { LinkButton } from "../index"
+import map from "./map.svg"
 
 const MessageWrapper = styled.div`
   margin: 3em;
@@ -27,16 +23,16 @@ const ErrorImage = styled.img`
   height: auto;
 `
 
-export const ErrorMessage = ({ retry }: IProps) => (
+export const NotFound = () => (
   <MessageWrapper>
     <ImageWrapper>
-      <ErrorImage src={plug} alt="Something is off" />
+      <ErrorImage src={map} alt="Page Not Found" />
     </ImageWrapper>
-    <h2>Something is off</h2>
-    <p>Failed to get information of the congress members.</p>
-    <p>Please check your internet connection and try again.</p>
+    <h2>Are you lost?</h2>
+    <p>Uh oh, that's embarrassing. I can't find the page you're looking for.</p>
+    <p>How about going straight to the start page?</p>
     <div>
-      <Button onClick={retry}>Try again</Button>
+      <LinkButton to="/">Go to start page</LinkButton>
     </div>
   </MessageWrapper>
 )

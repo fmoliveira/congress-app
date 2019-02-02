@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export const Button = styled.button`
+export const LinkButton = styled(Link)`
   display: inline-block;
   margin: 1em;
   padding: 0.75em 1em;
