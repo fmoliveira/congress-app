@@ -1,3 +1,5 @@
+import { orderBy } from "lodash"
+
 import { requestStatusSelector } from "../../../reducers/requestStatus"
 import { ActionTypes } from "../actions"
 
@@ -23,7 +25,7 @@ export function membersListStore(state = defaultState, action: IAction) {
     case ActionTypes.LIST_MEMBERS_SUCCESS:
       return {
         ...state,
-        members: action.members
+        members: orderBy(action.members, ["firstName", "lastName"])
       }
   }
   return defaultState
