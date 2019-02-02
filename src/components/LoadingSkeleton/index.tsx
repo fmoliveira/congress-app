@@ -1,5 +1,9 @@
 import styled, { keyframes } from "styled-components"
 
+interface ITextProps {
+  fullWidth?: boolean
+}
+
 const WaveAnimation = keyframes`
   0% {
     background-position: -200px 0;
@@ -10,7 +14,9 @@ const WaveAnimation = keyframes`
 `
 
 export const TextSkeleton = styled.div`
-  display: inline-block;
+  display: ${(props: ITextProps) =>
+    props.fullWidth ? "block" : "inline-block"};
+  margin: ${(props: ITextProps) => (props.fullWidth ? "0.5em" : "0")};
   padding: 0 0.5em;
   color: transparent;
   background-color: #d5dbe2;
