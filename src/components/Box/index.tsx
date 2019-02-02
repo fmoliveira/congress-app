@@ -9,10 +9,14 @@ interface IProps {
 }
 
 const Wrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   margin: 0.5em;
 `
 
 const Container = styled.div`
+  flex: 1;
   margin-top: 0.5em;
   padding: 0.5em;
   background-color: #ffffff;
