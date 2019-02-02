@@ -28,7 +28,6 @@
     "lodash.camelcase": "^4.3.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.6.2",
-    "ramda": "^0.26.1",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",
     "react-redux": "^6.0.0",
