@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import { Avatar, PartyName, SocialNetworkLinks } from "../index"
 
-const WrapperLink = styled(Link)`
+const ItemLink = styled(Link)`
   display: grid;
   grid-template-columns: 2fr repeat(4, 1fr);
   align-items: center;
@@ -53,6 +53,7 @@ interface IProps {
   facebookAccount: string
   twitterAccount: string
   youtubeAccount: string
+  history: any
 }
 
 export const ListItem = ({
@@ -67,7 +68,7 @@ export const ListItem = ({
   facebookAccount,
   youtubeAccount
 }: IProps) => (
-  <WrapperLink to={`members/${id}`}>
+  <ItemLink to={`members/${id}`}>
     <AvatarWrapper>
       <Avatar
         gender={gender}
@@ -90,5 +91,5 @@ export const ListItem = ({
         youtubeAccount={youtubeAccount}
       />
     </Text>
-  </WrapperLink>
+  </ItemLink>
 )
