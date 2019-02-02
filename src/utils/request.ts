@@ -26,11 +26,15 @@ export async function request(url: string) {
       "X-API-Key": API_KEY
     }
   }
-  return fetch(absoluteUrl, options)
-    .then(deserializeJson)
-    .then(normalizeCase)
-}
+  const response = await fetch(absoluteUrl, options)
+  const contentType = response.headers.get("Content-Type") || ""
 
-function deserializeJson(input: Response) {
-  return input.json()
+  if (contentType.startsWith("application/json")) {
+    const json = await response.json()
+    const normalized = normalizeCase(json)
+    return normalized
+  }
+
+  const text = await response.text()
+  return text
 }
