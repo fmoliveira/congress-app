@@ -1,18 +1,16 @@
-import React, { PureComponent } from "react"
+import React from "react"
 
 import { Box } from "../index"
-import { SkeletonNews } from "./SkeletonNews"
+import FeedReader from "./FeedReader"
 
 interface IProps {
-  feed: string
+  memberId: string
+  feedUrl: string
 }
 
-export class News extends PureComponent<IProps> {
-  public render() {
-    return (
-      <Box title="Latest News">
-        <SkeletonNews />
-      </Box>
-    )
-  }
-}
+export const News = ({ memberId, feedUrl }: IProps) => (
+  <Box title="Latest News">
+    {!feedUrl && <div>This member has no news feed available.</div>}
+    {feedUrl && <FeedReader memberId={memberId} feedUrl={feedUrl} />}
+  </Box>
+)
