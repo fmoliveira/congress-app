@@ -7,7 +7,7 @@ import { RequestStatusType } from "../../reducers/requestStatus"
 import { listMembers } from "./actions"
 import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
-import { ListView } from "./components"
+import { Filters, ListView } from "./components"
 
 interface IStateProps {
   status: RequestStatusType
@@ -37,6 +37,7 @@ class MembersList extends PureComponent<Props> {
 
     return (
       <div ref={this.membersListRef}>
+        <Filters />
         <ListView
           listMembers={this.listMembers}
           members={members}
