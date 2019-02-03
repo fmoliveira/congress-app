@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 import { ControlLabel, Input, SectionTitle } from "../../../_common"
@@ -13,21 +13,50 @@ const Hint = styled.span`
   color: #ae86cb;
 `
 
-const Filters = () => (
-  <div>
-    <SectionTitle>
-      Filters
-      <Hint>
-        Are you looking for a specific senator or representative? Use the
-        filters below.
-      </Hint>
-    </SectionTitle>
-    <Container>
-      <ControlLabel description="Senator Name">
-        <Input type="text" placeholder="Type a name to filter" />
-      </ControlLabel>
-    </Container>
-  </div>
-)
+export interface IFilters {
+  fullName: string
+}
+
+const initialFilters: IFilters = {
+  fullName: ""
+}
+
+interface IProps {
+  onChange: (newFilters: IFilters) => void
+}
+
+const Filters = ({ onChange }: IProps) => {
+  const [currentFilters, setFilters] = useState(initialFilters)
+
+  const updateFilter = (filterName: string) => (newValue: string) => {
+    const newFilters = {
+      ...currentFilters,
+      [filterName]: newValue
+    }
+    setFilters(newFilters)
+    onChange(newFilters)
+  }
+
+  return (
+    <div>
+      <SectionTitle>
+        Filters
+        <Hint>
+          Are you looking for a specific senator or representative? Use the
+          filters below.
+        </Hint>
+      </SectionTitle>
+      <Container>
+        <ControlLabel description="Senator Name">
+          <Input
+            type="text"
+            placeholder="Type a name to filter"
+            onChange={updateFilter("fullName")}
+          />
+        </ControlLabel>
+      </Container>
+    </div>
+  )
+}
 
 export default Filters
