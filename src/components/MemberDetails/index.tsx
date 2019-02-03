@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 
-import { noop } from "lodash"
+import { noop, size } from "lodash"
 
 import { RequestStatusType } from "../../reducers/requestStatus"
 import { memberInfoByIdSelector } from "../MembersList/reducers"
@@ -63,7 +63,7 @@ class MemberDetails extends PureComponent<Props> {
   private getListItemInfo = () => {
     const { details, info } = this.props
 
-    if (info) {
+    if (size(info) > 0) {
       return info
     }
 

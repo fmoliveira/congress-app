@@ -58,6 +58,7 @@ describe("MemberDetails", () => {
         twitterAccount: "DangerousPirate",
         youtubeAccount: "MaroonedInNassau"
       },
+      info: {},
       match: { params: { memberId: "M123" } }, // must differ from memberId above
       status: "SUCCESS"
     }
