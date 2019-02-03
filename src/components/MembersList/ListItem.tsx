@@ -42,7 +42,6 @@ const Text = styled.div`
 `
 
 interface IProps {
-  isLoading?: boolean
   id: string
   firstName: string
   lastName: string
