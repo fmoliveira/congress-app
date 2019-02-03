@@ -58,6 +58,7 @@ class MemberDetails extends PureComponent<Props> {
       }
     } = this.props
     const [currentRole = {}] = roles
+    const { office } = currentRole
 
     return (
       <div>
@@ -65,7 +66,7 @@ class MemberDetails extends PureComponent<Props> {
         <ListItem {...info} />
         <Columns>
           <News memberId={memberId} feedUrl={rssUrl} />
-          <Map address={currentRole.office} state={currentRole.state} />
+          <Map address={office} />
         </Columns>
       </div>
     )
