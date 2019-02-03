@@ -14,7 +14,7 @@ const HeaderWrapper = styled.div`
 
 export const ListHeader = () => (
   <HeaderWrapper>
-    <SmallHeader>Senators</SmallHeader>
+    <SmallHeader>Senator</SmallHeader>
     <SmallHeader>Party</SmallHeader>
     <SmallHeader>State/District</SmallHeader>
     <SmallHeader>Next Election</SmallHeader>

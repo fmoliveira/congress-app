@@ -9,6 +9,7 @@ import { getMemberDetails } from "./actions"
 import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 
 import { Map, News } from "../index"
+import { ListHeader } from "../MembersList/ListHeader"
 import { ListItem } from "../MembersList/ListItem"
 
 import back from "./back.svg"
@@ -93,6 +94,7 @@ class MemberDetails extends PureComponent<Props> {
             <LinkText>Back to members list</LinkText>
           </LinkWrapper>
         </header>
+        <ListHeader />
         <ListItem {...info} />
         <Columns>
           <News memberId={memberId} feedUrl={rssUrl} />
