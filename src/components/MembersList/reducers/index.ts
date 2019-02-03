@@ -1,34 +1,27 @@
 import { orderBy } from "lodash"
 
 import { requestStatusSelector } from "../../../reducers/requestStatus"
+import { IRootStore } from "../../../reducers/types"
 import { ActionTypes } from "../actions"
 import { IMemberInfo } from "../types"
 
-interface IStore {
+export interface IMembersListStore {
   chamber: string
   members: IMemberInfo[]
   numResults: number
   session: number
 }
 
-const initialState: IStore = {
+const initialState: IMembersListStore = {
   chamber: "",
   members: [],
   numResults: 0,
   session: 0
 }
 
-interface IAction {
-  chamber: string
-  members: any[]
-  numResults: number
-  session: number
-  type: ActionTypes
-}
+const getStore = (rootState: IRootStore) => rootState.membersListStore || {}
 
-const getStore = (rootState: any) => rootState.membersListStore || {}
-
-export function membersListStore(state = initialState, action: IAction) {
+export function membersListStore(state = initialState, action: any) {
   const { type, chamber, session, members, numResults } = action
 
   switch (type) {
@@ -46,10 +39,11 @@ export function membersListStore(state = initialState, action: IAction) {
   }
 }
 
-export const membersListSelector = (state: any) => getStore(state).members || []
+export const membersListSelector = (state: IRootStore) =>
+  getStore(state).members || []
 
-export const listMembersStatusSelector = (state: any) =>
+export const listMembersStatusSelector = (state: IRootStore) =>
   requestStatusSelector(state, "LIST_MEMBERS")
 
-export const memberInfoByIdSelector = (state: any, memberId: string) =>
-  membersListSelector(state).find((i: any) => i.id === memberId)
+export const memberInfoByIdSelector = (state: IRootStore, memberId: string) =>
+  membersListSelector(state).find((i: any) => i.id === memberId) || ({} as any)

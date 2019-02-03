@@ -1,5 +1,9 @@
 import { ActionTypes } from "../actions"
-import { newsFeedStore } from "./index"
+import {
+  newsFeedByMemberIdSelector,
+  newsFeedsSelector,
+  newsFeedStore
+} from "./index"
 
 describe("newsFeedStore", () => {
   it("Should define the initial state", () => {
@@ -86,5 +90,96 @@ describe("newsFeedStore", () => {
         ]
       }
     })
+  })
+})
+
+describe("newsFeedsSelector", () => {
+  it("Should select all members feeds", () => {
+    const state: any = {
+      newsFeedStore: {
+        feeds: {
+          J201: [
+            {
+              link: "https://jameskidd.jm/everything-permitted",
+              title: "Nothing is true, everything is permitted"
+            }
+          ],
+          M101: [
+            {
+              link: "https://maryread.bs/nassau-pirate-republic",
+              title: "Nassau, a safe republic for pirates"
+            }
+          ]
+        }
+      }
+    }
+    const selected = newsFeedsSelector(state)
+    expect(selected).toEqual({
+      J201: [
+        {
+          link: "https://jameskidd.jm/everything-permitted",
+          title: "Nothing is true, everything is permitted"
+        }
+      ],
+      M101: [
+        {
+          link: "https://maryread.bs/nassau-pirate-republic",
+          title: "Nassau, a safe republic for pirates"
+        }
+      ]
+    })
+  })
+})
+
+describe("newsFeedByMemberIdSelector", () => {
+  it("Should select news feed by member id", () => {
+    const state: any = {
+      newsFeedStore: {
+        feeds: {
+          J201: [
+            {
+              link: "https://jameskidd.jm/everything-permitted",
+              title: "Nothing is true, everything is permitted"
+            }
+          ],
+          M101: [
+            {
+              link: "https://maryread.bs/nassau-pirate-republic",
+              title: "Nassau, a safe republic for pirates"
+            }
+          ]
+        }
+      }
+    }
+    const selected = newsFeedByMemberIdSelector(state, "J201")
+    expect(selected).toEqual([
+      {
+        link: "https://jameskidd.jm/everything-permitted",
+        title: "Nothing is true, everything is permitted"
+      }
+    ])
+  })
+
+  it("Should select news feed by inexisting member id", () => {
+    const state: any = {
+      newsFeedStore: {
+        feeds: {
+          J201: [
+            {
+              link: "https://jameskidd.jm/everything-permitted",
+              title: "Nothing is true, everything is permitted"
+            }
+          ],
+          M101: [
+            {
+              link: "https://maryread.bs/nassau-pirate-republic",
+              title: "Nassau, a safe republic for pirates"
+            }
+          ]
+        }
+      }
+    }
+    const selected = newsFeedByMemberIdSelector(state, "A123")
+    expect(selected).toEqual([])
   })
 })

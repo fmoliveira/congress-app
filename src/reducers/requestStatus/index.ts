@@ -1,8 +1,12 @@
-interface IStore {
-  [name: string]: RequestStatusType
+import { IRootStore } from "../types"
+
+export interface IRequestStatusStore {
+  statuses: { [name: string]: RequestStatusType }
 }
 
-const defaultState: IStore = {}
+const defaultState: IRequestStatusStore = {
+  statuses: {}
+}
 
 export enum RequestStatusType {
   Loading = "REQUEST",
@@ -14,7 +18,7 @@ interface IAction {
   type: string
 }
 
-const getStore = (rootState: any) => rootState.requestStatusStore
+const getStore = (rootState: IRootStore) => rootState.requestStatusStore || {}
 
 export function requestStatusStore(state = defaultState, action: IAction) {
   const { type } = action
@@ -28,11 +32,14 @@ export function requestStatusStore(state = defaultState, action: IAction) {
   const [, requestName, requestStatus] = match
   return {
     ...state,
-    [requestName]: requestStatus
+    statuses: {
+      ...state.statuses,
+      [requestName]: requestStatus as RequestStatusType
+    }
   }
 }
 
-export function requestStatusSelector(state: object, request: string) {
+export function requestStatusSelector(state: IRootStore, request: string) {
   const store = getStore(state)
-  return store[request]
+  return store.statuses[request]
 }

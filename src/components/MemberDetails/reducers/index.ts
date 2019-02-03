@@ -1,28 +1,23 @@
 import { requestStatusSelector } from "../../../reducers/requestStatus"
+import { IRootStore } from "../../../reducers/types"
 import { ActionTypes } from "../actions"
 import { IMemberDetails } from "../types"
 
 export * from "../components/News/reducers"
 
-interface IStore {
+export interface IMemberDetailsStore {
   details: {
     [name: string]: IMemberDetails
   }
 }
 
-const initialState: IStore = {
+const initialState: IMemberDetailsStore = {
   details: {}
 }
 
-interface IAction {
-  details: IMemberDetails
-  memberId: string
-  type: ActionTypes
-}
+const getStore = (rootState: IRootStore) => rootState.membersDetailsStore || {}
 
-const getStore = (rootState: any) => rootState.membersDetailsStore || {}
-
-export function membersDetailsStore(state = initialState, action: IAction) {
+export function membersDetailsStore(state = initialState, action: any) {
   const { type, memberId, details } = action
 
   switch (type) {
@@ -40,11 +35,13 @@ export function membersDetailsStore(state = initialState, action: IAction) {
   }
 }
 
-export const membersDetailsSelector = (state: any) =>
+export const membersDetailsSelector = (state: IRootStore) =>
   getStore(state).details || {}
 
-export const memberDetailsByIdSelector = (state: any, memberId: string) =>
-  membersDetailsSelector(state)[memberId]
+export const memberDetailsByIdSelector = (
+  state: IRootStore,
+  memberId: string
+) => membersDetailsSelector(state)[memberId] || ({} as any)
 
-export const getDetailsStatusSelector = (state: any) =>
+export const getDetailsStatusSelector = (state: IRootStore) =>
   requestStatusSelector(state, "GET_MEMBER_DETAILS")
