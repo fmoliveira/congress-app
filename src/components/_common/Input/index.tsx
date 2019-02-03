@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
+import { noop } from "lodash"
+
 const Wrapper = styled.div`
   display: inline-flex;
   align-items: center;
@@ -39,14 +41,22 @@ const ClearButton = styled.div`
   }
 `
 
-export const Input = ({ initialValue = "", onChange, ...others }: any) => {
+export const Input = ({
+  initialValue = "",
+  onChange = noop,
+  ...others
+}: any) => {
   const [value, setValue] = useState(initialValue)
-  const updateValue = (event: any) => setValue(event.target.value)
-  const clearValue = () => setValue("")
+  const updateValue = (newValue: string) => {
+    setValue(newValue)
+    onChange(newValue)
+  }
+  const valueChanged = (event: any) => updateValue(event.target.value)
+  const clearValue = () => updateValue("")
 
   return (
     <Wrapper>
-      <InputStyle value={value} onChange={updateValue} {...others} />
+      <InputStyle value={value} onChange={valueChanged} {...others} />
       {value && (
         <ClearButton onClick={clearValue} title="Click to clear this field">
           &times;
