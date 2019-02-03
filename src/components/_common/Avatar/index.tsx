@@ -3,17 +3,17 @@ import styled from "styled-components"
 
 import getDefaultImage from "./getDefaultImage"
 
-interface IProps {
-  gender: string
-  facebookAccount: string
-  twitterAccount: string
-}
-
 const RoundImage = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 100%;
 `
+
+interface IProps {
+  gender: string
+  facebookAccount: string
+  twitterAccount: string
+}
 
 export const Avatar = ({ gender, facebookAccount, twitterAccount }: IProps) => {
   const [error, setError] = useState(false)

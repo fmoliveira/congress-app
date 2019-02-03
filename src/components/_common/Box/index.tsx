@@ -3,11 +3,6 @@ import styled from "styled-components"
 
 import { SmallHeader } from "../index"
 
-interface IProps {
-  title: string
-  children: React.ReactNode
-}
-
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
@@ -24,6 +19,11 @@ const Container = styled.div`
   background-color: #ffffff;
   overflow-y: auto;
 `
+
+interface IProps {
+  title: string
+  children: React.ReactNode
+}
 
 export const Box = ({ title, children }: IProps) => (
   <Wrapper>

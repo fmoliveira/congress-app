@@ -4,10 +4,6 @@ import styled from "styled-components"
 import { Button } from "../index"
 import plug from "./plug.svg"
 
-interface IProps {
-  retry: () => void
-}
-
 const MessageWrapper = styled.div`
   margin: 3em;
   text-align: center;
@@ -26,6 +22,10 @@ const ErrorImage = styled.img`
   width: 80px;
   height: auto;
 `
+
+interface IProps {
+  retry: () => void
+}
 
 export const ErrorMessage = ({ retry }: IProps) => (
   <MessageWrapper>

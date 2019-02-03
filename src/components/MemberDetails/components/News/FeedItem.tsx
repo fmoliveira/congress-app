@@ -3,10 +3,6 @@ import styled from "styled-components"
 
 import { Badge, Date } from "../../../_common"
 
-interface IProps {
-  feed: any
-}
-
 const ItemWrapper = styled.div`
   display: grid;
   grid-template-columns: 100px 1fr;
@@ -27,6 +23,10 @@ const Link = styled.a`
     text-decoration: underline;
   }
 `
+
+interface IProps {
+  feed: any
+}
 
 export const FeedItem = ({ feed }: IProps) => (
   <ItemWrapper>

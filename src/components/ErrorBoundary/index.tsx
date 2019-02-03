@@ -4,10 +4,6 @@ import styled from "styled-components"
 import { LinkButton } from "../_common"
 import bug from "./bug.svg"
 
-interface IProps {
-  clearError: () => void
-}
-
 const MessageWrapper = styled.div`
   margin: 3em;
   text-align: center;
@@ -26,6 +22,10 @@ const ErrorImage = styled.img`
   width: 80px;
   height: auto;
 `
+
+interface IProps {
+  clearError: () => void
+}
 
 const ErrorMessage = ({ clearError }: IProps) => (
   <MessageWrapper>
