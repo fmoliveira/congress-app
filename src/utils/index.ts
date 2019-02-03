@@ -1,3 +1,4 @@
+export * from "./cache"
 export * from "./getAbsoluteUrl"
 export * from "./getBaseUrl"
 export * from "./normalizeCase"
