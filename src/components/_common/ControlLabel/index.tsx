@@ -1,6 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 
+const Wrapper = styled.div`
+  display: inline-block;
+`
+
 const LabelDescription = styled.div`
   margin: 0.5em 0;
   font-size: 0.8em;
@@ -13,10 +17,10 @@ interface IProps {
 }
 
 export const ControlLabel = ({ description, children }: IProps) => (
-  <div>
+  <Wrapper>
     <label>
       <LabelDescription>{description}</LabelDescription>
       {children}
     </label>
-  </div>
+  </Wrapper>
 )
