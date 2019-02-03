@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MembersList Should render without crashing 1`] = `
+<div>
+  <div>
+    <div>
+      ListView
+    </div>
+  </div>
+</div>
+`;

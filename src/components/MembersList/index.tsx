@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 
+import { noop } from "lodash"
+
 import { RequestStatusType } from "../../reducers/requestStatus"
 import { listMembers } from "./actions"
 import { listMembersStatusSelector, membersListSelector } from "./reducers"
@@ -20,6 +22,7 @@ type Props = IStateProps & IDispatchProps
 
 class MembersList extends PureComponent<Props> {
   public static defaultProps = {
+    listMembers: noop,
     members: []
   }
 
@@ -66,6 +69,8 @@ const mapStateToProps = (state: any): IStateProps => ({
 const mapDispatchToProps: IDispatchProps = {
   listMembers
 }
+
+export { MembersList as UnconnectedMembersList }
 
 export default connect<IStateProps, IDispatchProps>(
   mapStateToProps,
