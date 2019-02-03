@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Box } from "../../_common"
+import { Box } from "../../../_common"
 import FeedReader from "./FeedReader"
 
 interface IProps {

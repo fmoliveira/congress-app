@@ -11,11 +11,8 @@ import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 import { Map } from "../_common"
 import { ListHeader } from "../MembersList/ListHeader"
 import { SkeletonItem } from "../MembersList/SkeletonItem"
-import { CommitteeHeader } from "./CommitteeHeader"
-import { CommitteeList } from "./CommitteeList"
+import { Committee, News } from "./components"
 import { MemberInfo } from "./MemberInfo"
-import { News } from "./News"
-import { SectionTitle } from "./SectionTitle"
 
 import back from "./back.svg"
 
@@ -111,13 +108,8 @@ class MemberDetails extends PureComponent<Props> {
           <Map address={office} />
         </Columns>
 
-        <SectionTitle>Committees</SectionTitle>
-        <CommitteeHeader />
-        <CommitteeList items={committees} />
-
-        <SectionTitle>Sub-commitees</SectionTitle>
-        <CommitteeHeader />
-        <CommitteeList items={subcommittees} />
+        <Committee title="Committees" items={committees} />
+        <Committee title="Sub-committees" items={subcommittees} />
       </div>
     )
   }
