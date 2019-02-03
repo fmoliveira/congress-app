@@ -1,9 +1,11 @@
 import React from "react"
 import { cleanup, render } from "react-testing-library"
 
+import Filters from "./components/Filters"
 import ListView from "./components/ListView"
 import { UnconnectedMembersList as MembersList } from "./index"
 
+jest.mock("./components/Filters", () => jest.fn(() => <div>Filters</div>))
 jest.mock("./components/ListView", () => jest.fn(() => <div>ListView</div>))
 
 const setup = (props?: any) => render(<MembersList {...props} />)
@@ -27,6 +29,11 @@ describe("MembersList", () => {
 
     expect(listMembers).toHaveBeenCalledTimes(1)
     expect(listMembers).toHaveBeenCalledWith(115, "senate")
+  })
+
+  it("Should render filters", () => {
+    setup()
+    expect(Filters).toHaveBeenCalledTimes(1)
   })
 
   it("Should render list view", () => {

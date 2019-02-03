@@ -2,17 +2,13 @@ import React, { Fragment } from "react"
 import shortId from "shortid"
 import styled from "styled-components"
 
+import { SectionTitle } from "../../../_common"
 import { CommitteeHeader } from "./CommitteeHeader"
 import { CommitteeItem } from "./CommitteeItem"
 
 const Container = styled.div`
   margin-bottom: 2em;
   color: #999999;
-`
-
-const SectionTitle = styled.div`
-  margin: 0 1em;
-  color: #555555;
 `
 
 interface IProps {

@@ -4,6 +4,9 @@ exports[`MembersList Should render without crashing 1`] = `
 <div>
   <div>
     <div>
+      Filters
+    </div>
+    <div>
       ListView
     </div>
   </div>
