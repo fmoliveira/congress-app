@@ -1,9 +1,5 @@
 import styled, { keyframes } from "styled-components"
 
-interface ITextProps {
-  fullWidth?: boolean
-}
-
 const WaveAnimation = keyframes`
   0% {
     background-position: -200px 0;
@@ -12,6 +8,10 @@ const WaveAnimation = keyframes`
     background-position: calc(200px + 100%) 0;
   }
 `
+
+interface ITextProps {
+  fullWidth?: boolean
+}
 
 export const TextSkeleton = styled.div`
   display: ${(props: ITextProps) =>

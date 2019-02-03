@@ -7,15 +7,6 @@ const GOOGLE_MAPS_KEY = "AIzaSyA-WTkvNO8bmhes9JzIzX5UTogM40H1Ufs"
 const GOOGLE_MAPS_ELEMENT_ID = "googleMapsScript"
 const GOOGLE_MAPS_CALLBACK_FN = "googleMapsLoaded"
 
-interface IProps {
-  address: string
-}
-
-interface IState {
-  status: RequestStatusType
-  coordinates: any
-}
-
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
@@ -25,6 +16,15 @@ const Wrapper = styled.div`
 const Container = styled.div`
   flex: 1;
 `
+
+interface IProps {
+  address: string
+}
+
+interface IState {
+  status: RequestStatusType
+  coordinates: any
+}
 
 export class MapDisplay extends PureComponent<IProps> {
   public state: IState = {

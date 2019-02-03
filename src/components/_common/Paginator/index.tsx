@@ -7,12 +7,6 @@ import previousIcon from "./previous.svg"
 
 const DEFAULT_ROWS_PER_PAGE = 30
 
-interface IProps {
-  children: (i: any) => React.ReactNode
-  data: any[]
-  onPageChanged?: () => void
-}
-
 const NavigationWrapper = styled.div`
   margin: 1em;
   display: grid;
@@ -27,6 +21,12 @@ const NavigationIcon = styled.img`
   width: 16px;
   height: 16px;
 `
+
+interface IProps {
+  children: (i: any) => React.ReactNode
+  data: any[]
+  onPageChanged?: () => void
+}
 
 export const Paginator = ({ children, data, onPageChanged }: IProps) => {
   const itemsPerPage = DEFAULT_ROWS_PER_PAGE

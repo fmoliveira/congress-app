@@ -4,11 +4,6 @@ import styled from "styled-components"
 import icons from "./icons"
 import { makeUrl } from "./makeUrl"
 
-interface IProps {
-  type: string
-  handle: string
-}
-
 interface IStyle {
   disabled?: boolean
 }
@@ -29,6 +24,11 @@ const IconStyle = styled.img`
     transform: translate(1px, 1px);
   }
 `
+
+interface IProps {
+  type: string
+  handle: string
+}
 
 export const SocialIcon = ({ type, handle }: IProps) => {
   const currentIcon = icons[type]
