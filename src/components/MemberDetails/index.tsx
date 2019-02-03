@@ -11,6 +11,7 @@ import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 import { Map, News } from "../index"
 import { ListHeader } from "../MembersList/ListHeader"
 import { ListItem } from "../MembersList/ListItem"
+import { SkeletonItem } from "../MembersList/SkeletonItem"
 
 import back from "./back.svg"
 
@@ -78,13 +79,14 @@ class MemberDetails extends PureComponent<Props> {
   public render() {
     const {
       details: { rssUrl = null, roles = [] } = {},
-      info,
+      status,
       match: {
         params: { memberId }
       }
     } = this.props
     const [currentRole = {}] = roles
     const { office } = currentRole
+    const info = this.getListItemInfo()
 
     return (
       <div>
@@ -95,7 +97,8 @@ class MemberDetails extends PureComponent<Props> {
           </LinkWrapper>
         </header>
         <ListHeader />
-        <ListItem {...info} />
+        {status !== RequestStatusType.Success && <SkeletonItem />}
+        {status === RequestStatusType.Success && <ListItem {...info} />}
         <Columns>
           <News memberId={memberId} feedUrl={rssUrl} />
           <Map address={office} />
@@ -104,7 +107,25 @@ class MemberDetails extends PureComponent<Props> {
     )
   }
 
-  private getMemberDetails() {
+  private getListItemInfo = () => {
+    const { details = {}, info } = this.props
+
+    if (info) {
+      return info
+    }
+
+    const { currentParty: party, roles = [] } = details
+    const [currentRole = {}] = roles
+    const { state } = currentRole
+
+    return {
+      ...details,
+      party,
+      state
+    }
+  }
+
+  private getMemberDetails = () => {
     const {
       match: {
         params: { memberId }
