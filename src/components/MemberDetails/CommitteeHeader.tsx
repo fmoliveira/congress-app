@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { SmallHeader } from "../index"
+import { SmallHeader } from "../_common"
 
 const HeaderWrapper = styled.div`
   display: grid;

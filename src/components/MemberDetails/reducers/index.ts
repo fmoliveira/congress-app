@@ -1,6 +1,8 @@
 import { requestStatusSelector } from "../../../reducers/requestStatus"
 import { ActionTypes } from "../actions"
 
+export * from "../News/reducers"
+
 const defaultState = {
   details: {}
 }

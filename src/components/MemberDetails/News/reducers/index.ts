@@ -1,4 +1,4 @@
-import { requestStatusSelector } from "../../../reducers/requestStatus"
+import { requestStatusSelector } from "../../../../reducers/requestStatus"
 import { ActionTypes } from "../actions"
 
 const defaultState = {

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { LinkButton } from "../index"
+import { LinkButton } from "../_common"
 import map from "./map.svg"
 
 const MessageWrapper = styled.div`

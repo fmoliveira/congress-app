@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { CircleSkeleton, TextSkeleton } from "../index"
+import { CircleSkeleton, TextSkeleton } from "../_common"
 
 const ItemWrapper = styled.div`
   display: grid;

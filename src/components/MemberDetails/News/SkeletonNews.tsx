@@ -1,6 +1,6 @@
 import React from "react"
 
-import { TextSkeleton } from "../LoadingSkeleton"
+import { TextSkeleton } from "../../_common"
 
 const SKELETON_ITEMS_AMOUNT = 5
 
