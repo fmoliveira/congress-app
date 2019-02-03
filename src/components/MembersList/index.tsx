@@ -5,10 +5,7 @@ import { RequestStatusType } from "../../reducers/requestStatus"
 import { listMembers } from "./actions"
 import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
-import { ErrorMessage, Paginator } from "../_common"
-import { ListHeader } from "./ListHeader"
-import { ListItem } from "./ListItem"
-import { SkeletonList } from "./SkeletonList"
+import { ListView } from "./components"
 
 interface IStateProps {
   status: RequestStatusType
@@ -37,16 +34,12 @@ class MembersList extends PureComponent<Props> {
 
     return (
       <div ref={this.membersListRef}>
-        {status !== RequestStatusType.Error && <ListHeader />}
-        {status === RequestStatusType.Error && (
-          <ErrorMessage retry={this.listMembers} />
-        )}
-        {status === RequestStatusType.Loading && <SkeletonList />}
-        {status === RequestStatusType.Success && (
-          <Paginator data={members} onPageChanged={this.scrollToTop}>
-            {i => <ListItem key={i.id} {...i} />}
-          </Paginator>
-        )}
+        <ListView
+          listMembers={this.listMembers}
+          members={members}
+          scrollToTop={this.scrollToTop}
+          status={status}
+        />
       </div>
     )
   }
