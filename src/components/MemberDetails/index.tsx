@@ -43,7 +43,8 @@ class MemberDetails extends PureComponent<Props> {
       }
     } = this.props
     const [, currentRole] = roles
-    const { office, committees = [], subcommittees = [] } = currentRole
+    const { office = "", committees = [], subcommittees = [] } =
+      currentRole || {}
     const info = this.getListItemInfo()
 
     return (
@@ -67,18 +68,18 @@ class MemberDetails extends PureComponent<Props> {
     }
 
     const {
-      memberId: id,
-      firstName,
-      gender,
-      lastName,
-      currentParty: party,
-      facebookAccount,
-      twitterAccount,
-      youtubeAccount,
+      memberId: id = "",
+      firstName = "",
+      gender = "",
+      lastName = "",
+      currentParty: party = "",
+      facebookAccount = "",
+      twitterAccount = "",
+      youtubeAccount = "",
       roles = []
-    } = details
+    } = details || {}
     const [currentRole] = roles
-    const { state } = currentRole
+    const { state = "" } = currentRole || {}
 
     return {
       facebookAccount,
