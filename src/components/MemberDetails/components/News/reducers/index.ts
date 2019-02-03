@@ -1,5 +1,6 @@
 import { requestStatusSelector } from "../../../../../reducers/requestStatus"
 import { ActionTypes } from "../actions"
+import { IFeedItem } from "../types"
 
 const defaultState = {
   feeds: {}
@@ -8,7 +9,7 @@ const defaultState = {
 interface IAction {
   type: ActionTypes
   memberId: string
-  feed: any[]
+  feed: IFeedItem[]
 }
 
 const getStore = (rootState: any) => rootState.newsFeedStore || {}

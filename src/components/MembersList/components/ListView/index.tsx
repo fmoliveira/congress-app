@@ -3,13 +3,14 @@ import React from "react"
 import { RequestStatusType } from "../../../../reducers/requestStatus"
 
 import { ErrorMessage, Paginator } from "../../../_common"
+import { IMemberInfo } from "../../types"
 import { ListHeader } from "./ListHeader"
 import { ListItem } from "./ListItem"
 import { SkeletonList } from "./SkeletonList"
 
 interface IProps {
   listMembers: () => void
-  members: any[]
+  members: IMemberInfo[]
   scrollToTop: () => void
   status: RequestStatusType
 }

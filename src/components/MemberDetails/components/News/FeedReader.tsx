@@ -7,6 +7,7 @@ import {
   loadNewsFeedStatusSelector,
   newsFeedByMemberIdSelector
 } from "./reducers"
+import { IFeedItem } from "./types"
 
 import { FeedList } from "./FeedList"
 import { SkeletonNews } from "./SkeletonNews"
@@ -17,7 +18,7 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-  feed: any[]
+  feed: IFeedItem[]
   status: RequestStatusType
 }
 

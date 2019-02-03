@@ -1,9 +1,10 @@
 import React from "react"
 
 import { FeedItem } from "./FeedItem"
+import { IFeedItem } from "./types"
 
 interface IProps {
-  feed: any[]
+  feed: IFeedItem[]
 }
 
 export const FeedList = ({ feed = [] }: IProps) => (

@@ -23,7 +23,7 @@ const NavigationIcon = styled.img`
 `
 
 interface IProps {
-  children: (i: any) => React.ReactNode
+  children: (child: any) => React.ReactNode
   data: any[]
   onPageChanged?: () => void
 }
