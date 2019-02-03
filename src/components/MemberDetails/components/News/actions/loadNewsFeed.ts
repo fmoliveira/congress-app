@@ -1,7 +1,7 @@
 import Redux from "redux"
 import RssParser from "rss-parser"
 
-import { getAbsoluteUrl, getBaseUrl } from "../../../../../utils"
+import { getAbsoluteUrl, getBaseUrl, request } from "../../../../../utils"
 import { INewsFeed } from "../types"
 import { ActionTypes } from "./index"
 
@@ -11,7 +11,8 @@ export function loadNewsFeed(memberId: string, feedUrl: string) {
     try {
       const parser = new RssParser()
       const crossOriginUrl = `https://cors-anywhere.herokuapp.com/${feedUrl}`
-      const feed = (await parser.parseURL(crossOriginUrl)) as INewsFeed
+      const xml = await request(crossOriginUrl)
+      const feed = (await parser.parseString(xml)) as INewsFeed
       dispatch(loadNewsFeedSuccess(memberId, feedUrl, feed))
     } catch {
       dispatch(loadNewsFeedFailure())
