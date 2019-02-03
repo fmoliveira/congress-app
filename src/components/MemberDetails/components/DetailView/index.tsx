@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { RequestStatusType } from "../../../../reducers/requestStatus"
 
 import { Map } from "../../../_common"
+import { ICommittee, IMemberInfo } from "../../types"
 import { Committee, News } from "../index"
 import { ListHeader } from "./ListHeader"
 import { MemberInfo } from "./MemberInfo"
@@ -50,13 +51,13 @@ export const Columns = styled.div`
 `
 
 interface IProps {
-  committees: any[]
-  info: any
+  committees: ICommittee[]
+  info: IMemberInfo
   memberId: string
   office: string
   rssUrl: string
   status: RequestStatusType
-  subcommittees: any[]
+  subcommittees: ICommittee[]
 }
 
 export const DetailView = ({

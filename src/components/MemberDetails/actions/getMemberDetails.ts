@@ -1,14 +1,17 @@
 import Redux from "redux"
 
 import { request } from "../../../utils"
+import { IMemberDetailsResponse } from "../types"
 import { ActionTypes } from "./index"
 
 export function getMemberDetails(memberId: string) {
   return async (dispatch: Redux.Dispatch) => {
     dispatch(getMemberDetailsRequest(memberId))
     try {
-      const data: any = await request(`members/${memberId}.json`)
-      dispatch(getMemberDetailsSuccess(memberId, data.results[0]))
+      const data: IMemberDetailsResponse = await request(
+        `members/${memberId}.json`
+      )
+      dispatch(getMemberDetailsSuccess(memberId, data))
     } catch {
       dispatch(getMemberDetailsFailure())
     }
@@ -22,7 +25,13 @@ function getMemberDetailsRequest(memberId: string) {
   }
 }
 
-function getMemberDetailsSuccess(memberId: string, details: any) {
+function getMemberDetailsSuccess(
+  memberId: string,
+  data: IMemberDetailsResponse
+) {
+  const { results = [] } = data
+  const [details] = results
+
   return {
     details,
     memberId,

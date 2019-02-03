@@ -7,6 +7,7 @@ import { getMemberDetails } from "./actions"
 import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 
 import { DetailView } from "./components"
+import { IMemberDetails, IMemberInfo } from "./types"
 
 interface IOwnProps {
   match: {
@@ -17,8 +18,8 @@ interface IOwnProps {
 }
 
 interface IStateProps {
-  details: any
-  info: any
+  details: IMemberDetails
+  info: IMemberInfo
   status: RequestStatusType
 }
 
@@ -35,13 +36,13 @@ class MemberDetails extends PureComponent<Props> {
 
   public render() {
     const {
-      details: { rssUrl = null, roles = [] } = {},
+      details: { rssUrl = "", roles = [] } = {},
       status,
       match: {
         params: { memberId }
       }
     } = this.props
-    const [, currentRole = {}] = roles
+    const [, currentRole] = roles
     const { office, committees = [], subcommittees = [] } = currentRole
     const info = this.getListItemInfo()
 
@@ -59,20 +60,35 @@ class MemberDetails extends PureComponent<Props> {
   }
 
   private getListItemInfo = () => {
-    const { details = {}, info } = this.props
+    const { details, info } = this.props
 
     if (info) {
       return info
     }
 
-    const { currentParty: party, roles = [] } = details
-    const [currentRole = {}] = roles
+    const {
+      memberId: id,
+      firstName,
+      lastName,
+      currentParty: party,
+      facebookAccount,
+      twitterAccount,
+      youtubeAccount,
+      roles = []
+    } = details
+    const [currentRole] = roles
     const { state } = currentRole
 
     return {
-      ...details,
+      facebookAccount,
+      firstName,
+      id,
+      lastName,
+      nextElection: "",
       party,
-      state
+      state,
+      twitterAccount,
+      youtubeAccount
     }
   }
 

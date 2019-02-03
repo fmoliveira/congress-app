@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import { Badge, Date } from "../../../_common"
+import { IFeedItem } from "./types"
 
 const ItemWrapper = styled.div`
   display: grid;
@@ -25,7 +26,7 @@ const Link = styled.a`
 `
 
 interface IProps {
-  feed: any
+  feed: IFeedItem
 }
 
 export const FeedItem = ({ feed }: IProps) => (

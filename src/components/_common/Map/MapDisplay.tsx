@@ -22,8 +22,8 @@ interface IProps {
 }
 
 interface IState {
+  coordinates?: google.maps.LatLng
   status: RequestStatusType
-  coordinates: any
 }
 
 export class MapDisplay extends PureComponent<IProps> {
@@ -74,6 +74,10 @@ export class MapDisplay extends PureComponent<IProps> {
   private displayMapAndMarker = () => {
     const { address } = this.props
     const { coordinates } = this.state
+
+    if (!coordinates) {
+      return
+    }
 
     const map = new google.maps.Map(this.mapRef.current, {
       center: coordinates,
