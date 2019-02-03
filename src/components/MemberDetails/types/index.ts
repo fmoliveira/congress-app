@@ -6,6 +6,8 @@ export interface IMemberInfo {
   party: string
   state: string
   district?: string
+  office: string
+  rssUrl: string
   nextElection: string
   facebookAccount: string
   twitterAccount: string

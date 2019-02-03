@@ -60,7 +60,7 @@ interface IProps {
   subcommittees: ICommittee[]
 }
 
-export const DetailView = ({
+const DetailView = ({
   committees,
   info,
   memberId,
@@ -90,3 +90,5 @@ export const DetailView = ({
     <Committee title="Sub-committees" items={subcommittees} />
   </div>
 )
+
+export default DetailView
