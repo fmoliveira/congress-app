@@ -1,5 +1,9 @@
 import { ActionTypes } from "../actions"
-import { membersListStore } from "./index"
+import {
+  memberInfoByIdSelector,
+  membersListSelector,
+  membersListStore
+} from "./index"
 
 describe("membersListStore", () => {
   it("Should define the initial state", () => {
@@ -73,5 +77,42 @@ describe("membersListStore", () => {
       numResults: 3500,
       session: 780
     })
+  })
+})
+
+describe("membersListSelector", () => {
+  it("Should select the list of members", () => {
+    const state: any = {
+      membersListStore: {
+        members: [{ id: "A101", name: "First" }, { id: "A102", name: "Second" }]
+      }
+    }
+    const selected = membersListSelector(state)
+    expect(selected).toEqual([
+      { id: "A101", name: "First" },
+      { id: "A102", name: "Second" }
+    ])
+  })
+})
+
+describe("memberInfoByIdSelector", () => {
+  it("Should select a member by id", () => {
+    const state: any = {
+      membersListStore: {
+        members: [{ id: "A101", name: "First" }, { id: "A102", name: "Second" }]
+      }
+    }
+    const selected = memberInfoByIdSelector(state, "A102")
+    expect(selected).toEqual({ id: "A102", name: "Second" })
+  })
+
+  it("Should select an inexisting member by id", () => {
+    const state: any = {
+      membersListStore: {
+        members: [{ id: "A101", name: "First" }, { id: "A102", name: "Second" }]
+      }
+    }
+    const selected = memberInfoByIdSelector(state, "A103")
+    expect(selected).toEqual({})
   })
 })

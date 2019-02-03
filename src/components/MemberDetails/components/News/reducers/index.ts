@@ -1,26 +1,21 @@
 import { requestStatusSelector } from "../../../../../reducers/requestStatus"
+import { IRootStore } from "../../../../../reducers/types"
 import { ActionTypes } from "../actions"
 import { IFeedItem } from "../types"
 
-interface IStore {
+export interface INewsFeedStore {
   feeds: {
     [name: string]: IFeedItem[]
   }
 }
 
-const defaultState: IStore = {
+const defaultState: INewsFeedStore = {
   feeds: {}
 }
 
-interface IAction {
-  feed: IFeedItem[]
-  memberId: string
-  type: ActionTypes
-}
+const getStore = (rootState: IRootStore) => rootState.newsFeedStore || {}
 
-const getStore = (rootState: any) => rootState.newsFeedStore || {}
-
-export function newsFeedStore(state = defaultState, action: IAction) {
+export function newsFeedStore(state = defaultState, action: any) {
   const { type, memberId, feed } = action
 
   switch (type) {
@@ -38,10 +33,13 @@ export function newsFeedStore(state = defaultState, action: IAction) {
   }
 }
 
-export const newsFeedsSelector = (state: any) => getStore(state).feeds || []
+export const newsFeedsSelector = (state: IRootStore) =>
+  getStore(state).feeds || {}
 
-export const newsFeedByMemberIdSelector = (state: any, memberId: string) =>
-  newsFeedsSelector(state)[memberId]
+export const newsFeedByMemberIdSelector = (
+  state: IRootStore,
+  memberId: string
+) => newsFeedsSelector(state)[memberId] || []
 
-export const loadNewsFeedStatusSelector = (state: any) =>
+export const loadNewsFeedStatusSelector = (state: IRootStore) =>
   requestStatusSelector(state, "LOAD_NEWS_FEED")

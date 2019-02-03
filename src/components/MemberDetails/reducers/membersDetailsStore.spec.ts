@@ -1,5 +1,9 @@
 import { ActionTypes } from "../actions"
-import { membersDetailsStore } from "./index"
+import {
+  memberDetailsByIdSelector,
+  membersDetailsSelector,
+  membersDetailsStore
+} from "./index"
 
 describe("membersDetailsStore", () => {
   it("Should define the initial state", () => {
@@ -56,5 +60,51 @@ describe("membersDetailsStore", () => {
         }
       }
     })
+  })
+})
+
+describe("membersDetailsSelector", () => {
+  it("Should select the list of members details", () => {
+    const state: any = {
+      membersDetailsStore: {
+        details: {
+          J201: { id: "J201", firstName: "James Kidd" },
+          M101: { id: "M101", firstName: "Mary Read" }
+        }
+      }
+    }
+    const selected = membersDetailsSelector(state)
+    expect(selected).toEqual({
+      J201: { id: "J201", firstName: "James Kidd" },
+      M101: { id: "M101", firstName: "Mary Read" }
+    })
+  })
+})
+
+describe("memberDetailsByIdSelector", () => {
+  it("Should select details of a member by id", () => {
+    const state: any = {
+      membersDetailsStore: {
+        details: {
+          J201: { id: "J201", firstName: "James Kidd" },
+          M101: { id: "M101", firstName: "Mary Read" }
+        }
+      }
+    }
+    const selected = memberDetailsByIdSelector(state, "M101")
+    expect(selected).toEqual({ id: "M101", firstName: "Mary Read" })
+  })
+
+  it("Should select details of an unexisting member by id", () => {
+    const state: any = {
+      membersDetailsStore: {
+        details: {
+          J201: { id: "J201", firstName: "James Kidd" },
+          M101: { id: "M101", firstName: "Mary Read" }
+        }
+      }
+    }
+    const selected = memberDetailsByIdSelector(state, "A101")
+    expect(selected).toEqual({})
   })
 })

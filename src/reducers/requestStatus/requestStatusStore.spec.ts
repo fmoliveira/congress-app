@@ -1,11 +1,15 @@
-import { requestStatusStore, RequestStatusType } from "./index"
+import {
+  requestStatusSelector,
+  requestStatusStore,
+  RequestStatusType
+} from "./index"
 
 describe("requestStatusStore", () => {
   it("Should define the initial state", () => {
     const state = undefined
     const action: any = {}
     const nextState = requestStatusStore(state, action)
-    expect(nextState).toEqual({})
+    expect(nextState).toEqual({ statuses: {} })
   })
 
   it("Should store loading state", () => {
@@ -15,7 +19,9 @@ describe("requestStatusStore", () => {
     }
     const nextState = requestStatusStore(state, action)
     expect(nextState).toEqual({
-      ANY: RequestStatusType.Loading
+      statuses: {
+        ANY: RequestStatusType.Loading
+      }
     })
   })
 
@@ -26,7 +32,9 @@ describe("requestStatusStore", () => {
     }
     const nextState = requestStatusStore(state, action)
     expect(nextState).toEqual({
-      ANY: RequestStatusType.Success
+      statuses: {
+        ANY: RequestStatusType.Success
+      }
     })
   })
 
@@ -37,51 +45,109 @@ describe("requestStatusStore", () => {
     }
     const nextState = requestStatusStore(state, action)
     expect(nextState).toEqual({
-      ANY: RequestStatusType.Error
+      statuses: {
+        ANY: RequestStatusType.Error
+      }
     })
   })
 
   it("Should replace loading for success state", () => {
     const state = {
-      ANY: RequestStatusType.Loading
+      statuses: {
+        ANY: RequestStatusType.Loading
+      }
     }
     const action = {
       type: "ANY_SUCCESS"
     }
     const nextState = requestStatusStore(state, action)
     expect(nextState).toEqual({
-      ANY: RequestStatusType.Success
+      statuses: {
+        ANY: RequestStatusType.Success
+      }
     })
   })
 
   it("Should replace loading for failure state", () => {
     const state = {
-      ANY: RequestStatusType.Loading
+      statuses: {
+        ANY: RequestStatusType.Loading
+      }
     }
     const action = {
       type: "ANY_FAILURE"
     }
     const nextState = requestStatusStore(state, action)
     expect(nextState).toEqual({
-      ANY: RequestStatusType.Error
+      statuses: {
+        ANY: RequestStatusType.Error
+      }
     })
   })
 
   it("Should preserve existing states", () => {
     const state = {
-      ANY: RequestStatusType.Error,
-      MANY: RequestStatusType.Success,
-      SOME: RequestStatusType.Loading
+      statuses: {
+        ANY: RequestStatusType.Error,
+        MANY: RequestStatusType.Success,
+        SOME: RequestStatusType.Loading
+      }
     }
     const action = {
       type: "STRIKE_MORE_SUCCESS"
     }
     const nextState = requestStatusStore(state, action)
     expect(nextState).toEqual({
-      ANY: RequestStatusType.Error,
-      MANY: RequestStatusType.Success,
-      SOME: RequestStatusType.Loading,
-      STRIKE_MORE: RequestStatusType.Success
+      statuses: {
+        ANY: RequestStatusType.Error,
+        MANY: RequestStatusType.Success,
+        SOME: RequestStatusType.Loading,
+        STRIKE_MORE: RequestStatusType.Success
+      }
     })
+  })
+})
+
+describe("requestStatusSelector", () => {
+  it("Should select a loading status", () => {
+    const state: any = {
+      requestStatusStore: {
+        statuses: {
+          ANY: RequestStatusType.Error,
+          MANY: RequestStatusType.Success,
+          SOME: RequestStatusType.Loading
+        }
+      }
+    }
+    const selected = requestStatusSelector(state, "SOME")
+    expect(selected).toBe(RequestStatusType.Loading)
+  })
+
+  it("Should select a success status", () => {
+    const state: any = {
+      requestStatusStore: {
+        statuses: {
+          ANY: RequestStatusType.Error,
+          MANY: RequestStatusType.Success,
+          SOME: RequestStatusType.Loading
+        }
+      }
+    }
+    const selected = requestStatusSelector(state, "MANY")
+    expect(selected).toBe(RequestStatusType.Success)
+  })
+
+  it("Should select a failure status", () => {
+    const state: any = {
+      requestStatusStore: {
+        statuses: {
+          ANY: RequestStatusType.Error,
+          MANY: RequestStatusType.Success,
+          SOME: RequestStatusType.Loading
+        }
+      }
+    }
+    const selected = requestStatusSelector(state, "ANY")
+    expect(selected).toBe(RequestStatusType.Error)
   })
 })
