@@ -10,6 +10,9 @@ interface IProps {
 const formatDate = (value: string, displayFormat: string) =>
   format(parse(value), displayFormat)
 
-export const Date = ({ value, displayFormat = "YYYY-MM-DD" }: IProps) => (
-  <time dateTime={value}>{formatDate(value, displayFormat)}</time>
-)
+export const Date = ({ value, displayFormat = "YYYY-MM-DD" }: IProps) => {
+  if (!value) {
+    return null
+  }
+  return <time dateTime={value}>{formatDate(value, displayFormat)}</time>
+}
