@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 
+import { noop } from "lodash"
+
 import { RequestStatusType } from "../../reducers/requestStatus"
 import { memberInfoByIdSelector } from "../MembersList/reducers"
 import { getMemberDetails } from "./actions"
@@ -30,22 +32,20 @@ interface IDispatchProps {
 type Props = IOwnProps & IStateProps & IDispatchProps
 
 class MemberDetails extends PureComponent<Props> {
+  public static defaultProps = {
+    getMemberDetails: noop
+  }
+
   public componentDidMount() {
     this.getMemberDetails()
   }
 
   public render() {
-    const {
-      details: { rssUrl = "", roles = [] } = {},
-      status,
-      match: {
-        params: { memberId }
-      }
-    } = this.props
+    const { details: { roles = [] } = {}, status } = this.props
     const [, currentRole] = roles
-    const { office = "", committees = [], subcommittees = [] } =
-      currentRole || {}
+    const { committees = [], subcommittees = [] } = currentRole || {}
     const info = this.getListItemInfo()
+    const { id: memberId = "", office = "", rssUrl = "" } = info
 
     return (
       <DetailView
@@ -74,12 +74,13 @@ class MemberDetails extends PureComponent<Props> {
       lastName = "",
       currentParty: party = "",
       facebookAccount = "",
+      rssUrl = "",
       twitterAccount = "",
       youtubeAccount = "",
       roles = []
     } = details || {}
-    const [currentRole] = roles
-    const { state = "" } = currentRole || {}
+    const [, currentRole] = roles
+    const { office = "", state = "" } = currentRole || {}
 
     return {
       facebookAccount,
@@ -88,7 +89,9 @@ class MemberDetails extends PureComponent<Props> {
       id,
       lastName,
       nextElection: "",
+      office,
       party,
+      rssUrl,
       state,
       twitterAccount,
       youtubeAccount
@@ -96,11 +99,7 @@ class MemberDetails extends PureComponent<Props> {
   }
 
   private getMemberDetails = () => {
-    const {
-      match: {
-        params: { memberId }
-      }
-    } = this.props
+    const { match: { params: { memberId = "" } = {} } = {} } = this.props
     this.props.getMemberDetails(memberId)
   }
 }
@@ -114,6 +113,8 @@ const mapStateToProps = (state: any, props: any): IStateProps => ({
 const mapDispatchToProps: IDispatchProps = {
   getMemberDetails
 }
+
+export { MemberDetails as UnconnectedMemberDetails }
 
 export default connect<IStateProps, IDispatchProps>(
   mapStateToProps,
