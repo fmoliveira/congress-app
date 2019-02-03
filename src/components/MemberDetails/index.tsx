@@ -69,6 +69,7 @@ class MemberDetails extends PureComponent<Props> {
     const {
       memberId: id,
       firstName,
+      gender,
       lastName,
       currentParty: party,
       facebookAccount,
@@ -82,6 +83,7 @@ class MemberDetails extends PureComponent<Props> {
     return {
       facebookAccount,
       firstName,
+      gender,
       id,
       lastName,
       nextElection: "",

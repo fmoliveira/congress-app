@@ -2,6 +2,7 @@ export interface IMemberInfo {
   id: string
   firstName: string
   lastName: string
+  gender: string
   party: string
   state: string
   district?: string
@@ -15,6 +16,7 @@ export interface IMemberDetails {
   memberId: string
   firstName: string
   lastName: string
+  gender: string
   currentParty: string
   rssUrl: string
   facebookAccount: string
