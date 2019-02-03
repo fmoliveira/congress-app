@@ -12,6 +12,9 @@ import { Map, News } from "../index"
 import { ListHeader } from "../MembersList/ListHeader"
 import { ListItem } from "../MembersList/ListItem"
 import { SkeletonItem } from "../MembersList/SkeletonItem"
+import { CommitteeHeader } from "./CommitteeHeader"
+import { CommitteeList } from "./CommitteeList"
+import { SectionTitle } from "./SectionTitle"
 
 import back from "./back.svg"
 
@@ -38,6 +41,7 @@ const LinkText = styled.span`
 `
 
 const Columns = styled.div`
+  margin: 1em 0;
   display: flex;
   flex-direction: row;
 
@@ -84,8 +88,8 @@ class MemberDetails extends PureComponent<Props> {
         params: { memberId }
       }
     } = this.props
-    const [currentRole = {}] = roles
-    const { office } = currentRole
+    const [, currentRole = {}] = roles
+    const { office, committees = [], subcommittees = [] } = currentRole
     const info = this.getListItemInfo()
 
     return (
@@ -96,13 +100,23 @@ class MemberDetails extends PureComponent<Props> {
             <LinkText>Back to members list</LinkText>
           </LinkWrapper>
         </header>
+
         <ListHeader />
         {status !== RequestStatusType.Success && <SkeletonItem />}
         {status === RequestStatusType.Success && <ListItem {...info} />}
+
         <Columns>
           <News memberId={memberId} feedUrl={rssUrl} />
           <Map address={office} />
         </Columns>
+
+        <SectionTitle>Committees</SectionTitle>
+        <CommitteeHeader />
+        <CommitteeList items={committees} />
+
+        <SectionTitle>Sub-commitees</SectionTitle>
+        <CommitteeHeader />
+        <CommitteeList items={subcommittees} />
       </div>
     )
   }
