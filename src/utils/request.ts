@@ -1,7 +1,11 @@
 import "whatwg-fetch"
 
-import { getAbsoluteUrl, normalizeCase } from "./index"
-import { retrieveFromCache, storeIntoCache } from "./offlineCache"
+import {
+  getAbsoluteUrl,
+  normalizeCase,
+  retrieveFromCache,
+  storeIntoCache
+} from "./index"
 
 const BASE_URL = "https://api.propublica.org/congress/v1/"
 
