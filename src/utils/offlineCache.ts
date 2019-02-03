@@ -1,9 +1,19 @@
 const offlineCache = {}
 
 export function retrieveFromCache(url: string): any {
-  return offlineCache[url]
+  const cached = offlineCache[url]
+  if (!cached) {
+    return null
+  }
+  try {
+    const deserialized = JSON.parse(cached)
+    return deserialized
+  } catch {
+    return null
+  }
 }
 
-export function storeIntoCache(url: string, response: any) {
-  offlineCache[url] = response
+export function storeIntoCache(url: string, response: any, type?: string) {
+  const serialized = JSON.stringify(response)
+  offlineCache[url] = serialized
 }
