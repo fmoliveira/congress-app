@@ -8,6 +8,11 @@ import { listMembers } from "./actions"
 import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
 import { Filters, ListView } from "./components"
+import { IFilters } from "./components/Filters"
+
+interface IOwnState {
+  filters: IFilters
+}
 
 interface IStateProps {
   status: RequestStatusType
@@ -20,10 +25,16 @@ interface IDispatchProps {
 
 type Props = IStateProps & IDispatchProps
 
-class MembersList extends PureComponent<Props> {
+class MembersList extends PureComponent<Props, IOwnState> {
   public static defaultProps = {
     listMembers: noop,
     members: []
+  }
+
+  public state = {
+    filters: {
+      fullName: ""
+    }
   }
 
   private membersListRef = React.createRef<HTMLDivElement>()
@@ -37,7 +48,7 @@ class MembersList extends PureComponent<Props> {
 
     return (
       <div ref={this.membersListRef}>
-        <Filters />
+        <Filters onChange={this.updateFilters} />
         <ListView
           listMembers={this.listMembers}
           members={members}
@@ -50,6 +61,10 @@ class MembersList extends PureComponent<Props> {
 
   private listMembers = () => {
     this.props.listMembers(115, "senate")
+  }
+
+  private updateFilters = (filters: IFilters) => {
+    this.setState({ filters })
   }
 
   private scrollToTop = () => {
