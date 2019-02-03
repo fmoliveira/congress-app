@@ -28,8 +28,6 @@ const Text = styled.div`
 `
 
 interface IProps {
-  isLoading?: boolean
-  id: string
   firstName: string
   lastName: string
   gender: string
@@ -39,11 +37,9 @@ interface IProps {
   facebookAccount: string
   twitterAccount: string
   youtubeAccount: string
-  history: any
 }
 
 export const MemberInfo = ({
-  id,
   firstName,
   lastName,
   gender,
@@ -52,8 +48,7 @@ export const MemberInfo = ({
   nextElection,
   twitterAccount,
   facebookAccount,
-  youtubeAccount,
-  history
+  youtubeAccount
 }: IProps) => (
   <ItemWrapper>
     <AvatarWrapper>
