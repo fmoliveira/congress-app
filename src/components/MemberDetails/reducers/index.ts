@@ -1,21 +1,28 @@
 import { requestStatusSelector } from "../../../reducers/requestStatus"
 import { ActionTypes } from "../actions"
+import { IMemberDetails } from "../types"
 
 export * from "../components/News/reducers"
 
-const defaultState = {
+interface IStore {
+  details: {
+    [name: string]: IMemberDetails
+  }
+}
+
+const initialState: IStore = {
   details: {}
 }
 
 interface IAction {
-  type: ActionTypes
+  details: IMemberDetails
   memberId: string
-  details: any
+  type: ActionTypes
 }
 
 const getStore = (rootState: any) => rootState.membersDetailsStore || {}
 
-export function membersDetailsStore(state = defaultState, action: IAction) {
+export function membersDetailsStore(state = initialState, action: IAction) {
   const { type, memberId, details } = action
 
   switch (type) {
