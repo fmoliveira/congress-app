@@ -29,7 +29,7 @@ function getMemberDetailsSuccess(
   memberId: string,
   data: IMemberDetailsResponse
 ) {
-  const { results = [] } = data
+  const { results } = data
   const [details] = results
 
   return {

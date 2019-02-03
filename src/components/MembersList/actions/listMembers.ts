@@ -31,7 +31,7 @@ function listMembersSuccess(
   chamber: string,
   data: IMembersListResponse
 ) {
-  const { results = [] } = data
+  const { results } = data
   const [firstResult] = results
   const { members, numResults } = firstResult
 
