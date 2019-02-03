@@ -1,6 +1,8 @@
 import React from "react"
+
+import { ConnectedRouter } from "connected-react-router"
 import { Provider } from "react-redux"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 
 import {
   ErrorBoundary,
@@ -10,12 +12,12 @@ import {
   NotFound
 } from "./components"
 
-import { configureStore } from "./config"
+import { configureStore, history } from "./config"
 const store = configureStore()
 
 export const App = () => (
   <Provider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <Layout>
         <ErrorBoundary>
           <Switch>
@@ -26,6 +28,6 @@ export const App = () => (
           </Switch>
         </ErrorBoundary>
       </Layout>
-    </Router>
+    </ConnectedRouter>
   </Provider>
 )
