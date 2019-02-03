@@ -8,8 +8,7 @@
     "test": "TZ=UTC react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage && open coverage/lcov-report/index.html",
     "eject": "react-scripts eject",
-    "lint": "tslint --config tslint.json --project . --format stylish",
-    "tsc": "tsc --watch"
+    "lint": "tslint --config tslint.json --project . --format stylish"
   },
   "husky": {
     "hooks": {
