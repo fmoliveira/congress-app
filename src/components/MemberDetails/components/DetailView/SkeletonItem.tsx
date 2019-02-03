@@ -27,21 +27,21 @@ const SocialNetworksWrapper = styled.div`
   }
 `
 
+const ColumnSkeleton = ({ children }: { children: React.ReactNode }) => (
+  <div>
+    <TextSkeleton>{children}</TextSkeleton>
+  </div>
+)
+
 export const SkeletonItem = () => (
   <ItemWrapper>
     <AvatarWrapper>
       <CircleSkeleton />
       <TextSkeleton>Member Name</TextSkeleton>
     </AvatarWrapper>
-    <div>
-      <TextSkeleton>Party Name</TextSkeleton>
-    </div>
-    <div>
-      <TextSkeleton>CA</TextSkeleton>
-    </div>
-    <div>
-      <TextSkeleton>Year</TextSkeleton>
-    </div>
+    <ColumnSkeleton>Party Name</ColumnSkeleton>
+    <ColumnSkeleton>CA</ColumnSkeleton>
+    <ColumnSkeleton>Year</ColumnSkeleton>
     <SocialNetworksWrapper>
       <CircleSkeleton />
       <CircleSkeleton />
