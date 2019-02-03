@@ -10,10 +10,10 @@ import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 
 import { Map, News } from "../index"
 import { ListHeader } from "../MembersList/ListHeader"
-import { ListItem } from "../MembersList/ListItem"
 import { SkeletonItem } from "../MembersList/SkeletonItem"
 import { CommitteeHeader } from "./CommitteeHeader"
 import { CommitteeList } from "./CommitteeList"
+import { MemberInfo } from "./MemberInfo"
 import { SectionTitle } from "./SectionTitle"
 
 import back from "./back.svg"
@@ -103,7 +103,7 @@ class MemberDetails extends PureComponent<Props> {
 
         <ListHeader />
         {status !== RequestStatusType.Success && <SkeletonItem />}
-        {status === RequestStatusType.Success && <ListItem {...info} />}
+        {status === RequestStatusType.Success && <MemberInfo {...info} />}
 
         <Columns>
           <News memberId={memberId} feedUrl={rssUrl} />
