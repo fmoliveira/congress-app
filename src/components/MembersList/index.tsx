@@ -9,6 +9,7 @@ import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
 import { Filters, ListView } from "./components"
 import { IFilters } from "./components/Filters"
+import { filterMembers } from "./functions"
 import { IMemberInfo } from "./types"
 
 interface IOwnState {
@@ -45,7 +46,8 @@ class MembersList extends PureComponent<Props, IOwnState> {
   }
 
   public render() {
-    const { members, status } = this.props
+    const { status } = this.props
+    const members = this.getFilteredMembers()
 
     return (
       <div ref={this.membersListRef}>
@@ -59,6 +61,9 @@ class MembersList extends PureComponent<Props, IOwnState> {
       </div>
     )
   }
+
+  private getFilteredMembers = () =>
+    filterMembers(this.props.members, this.state.filters)
 
   private listMembers = () => {
     this.props.listMembers(115, "senate")
