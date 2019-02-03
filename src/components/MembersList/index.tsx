@@ -9,6 +9,7 @@ import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
 import { Filters, ListView } from "./components"
 import { IFilters } from "./components/Filters"
+import { IMemberInfo } from "./types"
 
 interface IOwnState {
   filters: IFilters
@@ -16,7 +17,7 @@ interface IOwnState {
 
 interface IStateProps {
   status: RequestStatusType
-  members: any[]
+  members: IMemberInfo[]
 }
 
 interface IDispatchProps {
