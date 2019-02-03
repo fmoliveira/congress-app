@@ -77,6 +77,9 @@ export class MapDisplay extends PureComponent<IProps> {
 
     const map = new google.maps.Map(this.mapRef.current, {
       center: coordinates,
+      fullscreenControl: false,
+      mapTypeControl: false,
+      streetViewControl: false,
       zoom: 13
     })
 
