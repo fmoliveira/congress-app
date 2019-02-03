@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import shortId from "shortid"
 import styled from "styled-components"
 
 import { CommitteeHeader } from "./CommitteeHeader"
@@ -25,7 +26,7 @@ export const Committee = ({ title, items }: IProps) => (
     <CommitteeHeader />
     <Container>
       {items.map(i => (
-        <CommitteeItem key={i.code} {...i} />
+        <CommitteeItem key={shortId.generate()} {...i} />
       ))}
     </Container>
   </Fragment>
