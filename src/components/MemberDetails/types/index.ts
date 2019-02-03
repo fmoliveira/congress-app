@@ -1,17 +1,17 @@
 export interface IMemberInfo {
   id: string
   firstName: string
-  lastName: string
-  gender: string
-  party: string
-  state: string
+  lastName?: string
+  gender?: string
+  party?: string
+  state?: string
   district?: string
-  office: string
-  rssUrl: string
-  nextElection: string
-  facebookAccount: string
-  twitterAccount: string
-  youtubeAccount: string
+  office?: string
+  nextElection?: string
+  rssUrl?: string
+  facebookAccount?: string
+  twitterAccount?: string
+  youtubeAccount?: string
 }
 
 export interface IMemberDetails {

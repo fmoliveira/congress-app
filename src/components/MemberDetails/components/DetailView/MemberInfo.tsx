@@ -29,26 +29,26 @@ const Text = styled.div`
 
 interface IProps {
   firstName: string
-  lastName: string
-  gender: string
-  party: string
-  state: string
-  nextElection: string
-  facebookAccount: string
-  twitterAccount: string
-  youtubeAccount: string
+  lastName?: string
+  gender?: string
+  party?: string
+  state?: string
+  nextElection?: string
+  facebookAccount?: string
+  twitterAccount?: string
+  youtubeAccount?: string
 }
 
 export const MemberInfo = ({
-  firstName,
-  lastName,
-  gender,
-  party,
-  state,
-  nextElection,
-  twitterAccount,
-  facebookAccount,
-  youtubeAccount
+  firstName = "",
+  lastName = "",
+  gender = "",
+  party = "",
+  state = "",
+  nextElection = "",
+  twitterAccount = "",
+  facebookAccount = "",
+  youtubeAccount = ""
 }: IProps) => (
   <ItemWrapper>
     <AvatarWrapper>
