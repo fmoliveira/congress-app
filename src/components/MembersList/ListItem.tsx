@@ -1,10 +1,10 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 import styled from "styled-components"
 
 import { Avatar, PartyName, SocialNetworkLinks } from "../index"
 
-const ItemLink = styled(Link)`
+const ItemWrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr repeat(4, 1fr);
   align-items: center;
@@ -56,40 +56,46 @@ interface IProps {
   history: any
 }
 
-export const ListItem = ({
-  id,
-  firstName,
-  lastName,
-  gender,
-  party,
-  state,
-  nextElection,
-  twitterAccount,
-  facebookAccount,
-  youtubeAccount
-}: IProps) => (
-  <ItemLink to={`members/${id}`}>
-    <AvatarWrapper>
-      <Avatar
-        gender={gender}
-        facebookAccount={facebookAccount}
-        twitterAccount={twitterAccount}
-      />
-      <Text>
-        {firstName} {lastName}
-      </Text>
-    </AvatarWrapper>
-    <Text>
-      <PartyName id={party} />
-    </Text>
-    <Text>{state}</Text>
-    <Text>{nextElection}</Text>
-    <Text>
-      <SocialNetworkLinks
-        facebookAccount={facebookAccount}
-        twitterAccount={twitterAccount}
-        youtubeAccount={youtubeAccount}
-      />
-    </Text>
-  </ItemLink>
+export const ListItem = withRouter<any>(
+  ({
+    id,
+    firstName,
+    lastName,
+    gender,
+    party,
+    state,
+    nextElection,
+    twitterAccount,
+    facebookAccount,
+    youtubeAccount,
+    history
+  }: IProps) => {
+    const goToDetail = () => history.push(`/members/${id}`)
+    return (
+      <ItemWrapper onClick={goToDetail}>
+        <AvatarWrapper>
+          <Avatar
+            gender={gender}
+            facebookAccount={facebookAccount}
+            twitterAccount={twitterAccount}
+          />
+          <Text>
+            {firstName} {lastName}
+          </Text>
+        </AvatarWrapper>
+        <Text>
+          <PartyName id={party} />
+        </Text>
+        <Text>{state}</Text>
+        <Text>{nextElection}</Text>
+        <Text>
+          <SocialNetworkLinks
+            facebookAccount={facebookAccount}
+            twitterAccount={twitterAccount}
+            youtubeAccount={youtubeAccount}
+          />
+        </Text>
+      </ItemWrapper>
+    )
+  }
 )
