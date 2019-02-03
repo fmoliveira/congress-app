@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react"
 import styled from "styled-components"
 
-import { RequestStatusType } from "../../reducers/requestStatus"
+import { RequestStatusType } from "../../../reducers/requestStatus"
 
 const GOOGLE_MAPS_KEY = "AIzaSyA-WTkvNO8bmhes9JzIzX5UTogM40H1Ufs"
 const GOOGLE_MAPS_ELEMENT_ID = "googleMapsScript"

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Date } from "../index"
+import { Date } from "../_common"
 
 const ItemWrapper = styled.div`
   display: grid;

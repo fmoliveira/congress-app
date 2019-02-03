@@ -5,7 +5,7 @@ import { RequestStatusType } from "../../reducers/requestStatus"
 import { listMembers } from "./actions"
 import { listMembersStatusSelector, membersListSelector } from "./reducers"
 
-import { ErrorMessage, Paginator } from "../index"
+import { ErrorMessage, Paginator } from "../_common"
 import { ListHeader } from "./ListHeader"
 import { ListItem } from "./ListItem"
 import { SkeletonList } from "./SkeletonList"

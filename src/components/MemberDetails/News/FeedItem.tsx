@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Badge, Date } from "../index"
+import { Badge, Date } from "../../_common"
 
 interface IProps {
   feed: any

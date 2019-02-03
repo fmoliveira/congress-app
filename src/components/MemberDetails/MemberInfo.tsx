@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Avatar, PartyName, SocialNetworkLinks } from "../index"
+import { Avatar, PartyName, SocialNetworkLinks } from "../_common"
 
 const ItemWrapper = styled.div`
   display: grid;

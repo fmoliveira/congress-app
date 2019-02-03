@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react"
 import styled from "styled-components"
 
-import { LinkButton } from "../index"
+import { LinkButton } from "../_common"
 import bug from "./bug.svg"
 
 interface IProps {

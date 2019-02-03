@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import styled, { createGlobalStyle } from "styled-components"
 
-import { Header } from ".."
+import { Header } from "./Header"
 
 const GlobalStyle = createGlobalStyle`
   body {

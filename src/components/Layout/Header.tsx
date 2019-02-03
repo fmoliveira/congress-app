@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Logo } from ".."
+import { Logo } from "../_common"
 
 const HeaderContainer = styled.header`
   background-color: #222;
