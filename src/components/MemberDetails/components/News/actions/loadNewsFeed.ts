@@ -33,13 +33,12 @@ function loadNewsFeedSuccess(
 ) {
   const baseUrl = getBaseUrl(feedUrl)
   const { items } = feed || []
-  const keyedFeed = items.map((i, idx) => ({
-    key: idx,
+  const feedWithAbsoluteLinks = items.map((i, idx) => ({
     ...i,
     link: getAbsoluteUrl(i.link, baseUrl)
   }))
   return {
-    feed: keyedFeed,
+    feed: feedWithAbsoluteLinks,
     memberId,
     type: ActionTypes.LOAD_NEWS_FEED_SUCCESS
   }
