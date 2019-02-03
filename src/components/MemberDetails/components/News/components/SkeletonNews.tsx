@@ -6,7 +6,7 @@ const SKELETON_ITEMS_AMOUNT = 5
 
 const items = new Array(SKELETON_ITEMS_AMOUNT).fill(0).map((_, idx) => idx)
 
-export const SkeletonNews = () => (
+const SkeletonNews = () => (
   <div>
     {items.map(i => (
       <TextSkeleton key={i} fullWidth={true}>
@@ -15,3 +15,5 @@ export const SkeletonNews = () => (
     ))}
   </div>
 )
+
+export default SkeletonNews

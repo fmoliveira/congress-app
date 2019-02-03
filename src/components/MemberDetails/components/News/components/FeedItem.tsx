@@ -29,7 +29,7 @@ interface IProps {
   feed: IFeedItem
 }
 
-export const FeedItem = ({ feed }: IProps) => (
+const FeedItem = ({ feed }: IProps) => (
   <ItemWrapper>
     <Badge>
       <Date value={feed.pubDate} displayFormat="MMM D, YYYY" />
@@ -39,3 +39,5 @@ export const FeedItem = ({ feed }: IProps) => (
     </Link>
   </ItemWrapper>
 )
+
+export default FeedItem

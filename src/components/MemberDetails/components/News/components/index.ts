@@ -1,3 +1,8 @@
-export * from "./FeedItem"
-export * from "./FeedList"
-export * from "./SkeletonNews"
+import FeedItem from "./FeedItem"
+export { FeedItem }
+
+import FeedList from "./FeedList"
+export { FeedList }
+
+import SkeletonNews from "./SkeletonNews"
+export { SkeletonNews }
