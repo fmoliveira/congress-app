@@ -54,7 +54,7 @@ export class MapDisplay extends PureComponent<IProps> {
     window[GOOGLE_MAPS_CALLBACK_FN] = this.googleMapsLoaded
 
     // google maps is already loaded :)
-    if (document.getElementById("GOOGLE_MAPS_ELEMENT_ID")) {
+    if (document.getElementById(GOOGLE_MAPS_ELEMENT_ID)) {
       this.googleMapsLoaded()
       return
     }
