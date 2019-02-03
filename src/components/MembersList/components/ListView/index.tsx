@@ -1,0 +1,33 @@
+import React from "react"
+
+import { RequestStatusType } from "../../../../reducers/requestStatus"
+
+import { ErrorMessage, Paginator } from "../../../_common"
+import { ListHeader } from "./ListHeader"
+import { ListItem } from "./ListItem"
+import { SkeletonList } from "./SkeletonList"
+
+interface IProps {
+  listMembers: () => void
+  members: any[]
+  scrollToTop: () => void
+  status: RequestStatusType
+}
+
+export const ListView = ({
+  listMembers,
+  members,
+  scrollToTop,
+  status
+}: IProps) => (
+  <div>
+    {status !== RequestStatusType.Error && <ListHeader />}
+    {status === RequestStatusType.Error && <ErrorMessage retry={listMembers} />}
+    {status === RequestStatusType.Loading && <SkeletonList />}
+    {status === RequestStatusType.Success && (
+      <Paginator data={members} onPageChanged={scrollToTop}>
+        {i => <ListItem key={i.id} {...i} />}
+      </Paginator>
+    )}
+  </div>
+)
