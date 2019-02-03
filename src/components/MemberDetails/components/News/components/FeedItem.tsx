@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Badge, Date } from "../../../_common"
-import { IFeedItem } from "./types"
+import { Badge, Date } from "../../../../_common"
+import { IFeedItem } from "../types"
 
 const ItemWrapper = styled.div`
   display: grid;

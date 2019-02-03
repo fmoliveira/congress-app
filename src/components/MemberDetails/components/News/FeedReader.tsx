@@ -9,8 +9,7 @@ import {
 } from "./reducers"
 import { IFeedItem } from "./types"
 
-import { FeedList } from "./FeedList"
-import { SkeletonNews } from "./SkeletonNews"
+import { FeedList, SkeletonNews } from "./components"
 
 interface IOwnProps {
   memberId: string

@@ -1,8 +1,8 @@
 import React from "react"
 import shortId from "shortid"
 
-import { FeedItem } from "./FeedItem"
-import { IFeedItem } from "./types"
+import { IFeedItem } from "../types"
+import { FeedItem } from "./index"
 
 interface IProps {
   feed: IFeedItem[]
