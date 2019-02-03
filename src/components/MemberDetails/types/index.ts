@@ -17,14 +17,14 @@ export interface IMemberInfo {
 export interface IMemberDetails {
   memberId: string
   firstName: string
-  lastName: string
-  gender: string
-  currentParty: string
-  rssUrl: string
-  facebookAccount: string
-  twitterAccount: string
-  youtubeAccount: string
-  roles: IMemberRole[]
+  lastName?: string
+  gender?: string
+  currentParty?: string
+  rssUrl?: string
+  facebookAccount?: string
+  twitterAccount?: string
+  youtubeAccount?: string
+  roles?: IMemberRole[]
 }
 
 export interface IMemberRole {

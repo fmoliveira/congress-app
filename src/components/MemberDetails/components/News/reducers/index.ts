@@ -2,14 +2,20 @@ import { requestStatusSelector } from "../../../../../reducers/requestStatus"
 import { ActionTypes } from "../actions"
 import { IFeedItem } from "../types"
 
-const defaultState = {
+interface IStore {
+  feeds: {
+    [name: string]: IFeedItem[]
+  }
+}
+
+const defaultState: IStore = {
   feeds: {}
 }
 
 interface IAction {
-  type: ActionTypes
-  memberId: string
   feed: IFeedItem[]
+  memberId: string
+  type: ActionTypes
 }
 
 const getStore = (rootState: any) => rootState.newsFeedStore || {}

@@ -2,30 +2,43 @@ import { orderBy } from "lodash"
 
 import { requestStatusSelector } from "../../../reducers/requestStatus"
 import { ActionTypes } from "../actions"
+import { IMemberInfo } from "../types"
 
-const defaultState = {
+interface IStore {
+  chamber: string
+  members: IMemberInfo[]
+  numResults: number
+  session: number
+}
+
+const initialState: IStore = {
   chamber: "",
-  congress: "",
   members: [],
-  numResults: 0
+  numResults: 0,
+  session: 0
 }
 
 interface IAction {
+  chamber: string
+  members: any[]
+  numResults: number
+  session: number
   type: ActionTypes
-  chamber: ""
-  congress: ""
-  members: []
-  numResults: 0
 }
 
 const getStore = (rootState: any) => rootState.membersListStore || {}
 
-export function membersListStore(state = defaultState, action: IAction) {
-  switch (action.type) {
+export function membersListStore(state = initialState, action: IAction) {
+  const { type, chamber, session, members, numResults } = action
+
+  switch (type) {
     case ActionTypes.LIST_MEMBERS_SUCCESS:
       return {
         ...state,
-        members: orderBy(action.members, ["firstName", "lastName"])
+        chamber,
+        members: orderBy(members, ["firstName", "lastName"]),
+        numResults,
+        session
       }
 
     default:

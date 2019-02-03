@@ -1,4 +1,8 @@
-const defaultState = {}
+interface IStore {
+  [name: string]: RequestStatusType
+}
+
+const defaultState: IStore = {}
 
 export enum RequestStatusType {
   Loading = "REQUEST",
