@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Date Should not render without a value 1`] = `<div />`;
+
+exports[`Date Should render with a custom format 1`] = `
+<div>
+  <time
+    datetime="Mon, 4 Feb 2019 15:16:17 EST"
+  >
+    02/04/2019
+  </time>
+</div>
+`;
+
+exports[`Date Should render with a time format 1`] = `
+<div>
+  <time
+    datetime="Mon, 4 Feb 2019 15:16:17 EST"
+  >
+    02/04/2019 8:16 PM
+  </time>
+</div>
+`;
+
+exports[`Date Should render with a value 1`] = `
+<div>
+  <time
+    datetime="Mon, 4 Feb 2019 15:16:17 EST"
+  >
+    2019-02-04
+  </time>
+</div>
+`;
