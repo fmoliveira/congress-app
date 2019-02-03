@@ -1,57 +1,12 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
-import styled from "styled-components"
 
 import { RequestStatusType } from "../../reducers/requestStatus"
 import { memberInfoByIdSelector } from "../MembersList/reducers"
 import { getMemberDetails } from "./actions"
 import { getDetailsStatusSelector, memberDetailsByIdSelector } from "./reducers"
 
-import { Map } from "../_common"
-import { ListHeader } from "../MembersList/ListHeader"
-import { SkeletonItem } from "../MembersList/SkeletonItem"
-import { Committee, News } from "./components"
-import { MemberInfo } from "./MemberInfo"
-
-import back from "./back.svg"
-
-const LinkWrapper = styled(Link)`
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0 1em;
-  text-decoration: none;
-  color: #999999;
-
-  &:hover {
-    color: #555555;
-  }
-`
-
-const Icon = styled.img`
-  width: auto;
-  height: 16px;
-`
-
-const LinkText = styled.span`
-  margin: 0 1em;
-`
-
-const Columns = styled.div`
-  margin: 1em 0;
-  display: flex;
-  flex-direction: row;
-
-  & > * {
-    width: 50%:
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: 350px;
-    overflow: hidden;
-  }
-`
+import { DetailView } from "./components"
 
 interface IOwnProps {
   match: {
@@ -91,26 +46,15 @@ class MemberDetails extends PureComponent<Props> {
     const info = this.getListItemInfo()
 
     return (
-      <div>
-        <header>
-          <LinkWrapper to="/">
-            <Icon src={back} alt="Go back to members list" />
-            <LinkText>Back to members list</LinkText>
-          </LinkWrapper>
-        </header>
-
-        <ListHeader />
-        {status !== RequestStatusType.Success && <SkeletonItem />}
-        {status === RequestStatusType.Success && <MemberInfo {...info} />}
-
-        <Columns>
-          <News memberId={memberId} feedUrl={rssUrl} />
-          <Map address={office} />
-        </Columns>
-
-        <Committee title="Committees" items={committees} />
-        <Committee title="Sub-committees" items={subcommittees} />
-      </div>
+      <DetailView
+        committees={committees}
+        info={info}
+        memberId={memberId}
+        office={office}
+        rssUrl={rssUrl}
+        status={status}
+        subcommittees={subcommittees}
+      />
     )
   }
 
