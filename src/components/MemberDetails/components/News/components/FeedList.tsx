@@ -8,10 +8,12 @@ interface IProps {
   feed: IFeedItem[]
 }
 
-export const FeedList = ({ feed = [] }: IProps) => (
+const FeedList = ({ feed = [] }: IProps) => (
   <div>
     {feed.map(i => (
       <FeedItem key={shortId.generate()} feed={i} />
     ))}
   </div>
 )
+
+export default FeedList

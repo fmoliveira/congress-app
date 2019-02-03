@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 
+import { noop } from "lodash"
+
 import { RequestStatusType } from "../../../../reducers/requestStatus"
 import { loadNewsFeed } from "./actions"
 import {
@@ -28,6 +30,10 @@ interface IDispatchProps {
 type Props = IOwnProps & IStateProps & IDispatchProps
 
 class FeedReader extends PureComponent<Props> {
+  public static defaultProps = {
+    loadNewsFeed: noop
+  }
+
   public componentDidMount() {
     this.loadNewsFeed()
   }
@@ -60,6 +66,8 @@ const mapStateToProps = (state: any, props: any) => ({
 const mapDispatchToProps = {
   loadNewsFeed
 }
+
+export { FeedReader as UnconnectedFeedReader }
 
 export default connect<IStateProps, IDispatchProps>(
   mapStateToProps,
