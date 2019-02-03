@@ -1,7 +1,7 @@
 import Redux from "redux"
 import RssParser from "rss-parser"
 
-import { getAbsoluteUrl, getBaseUrl } from "../../../../utils"
+import { getAbsoluteUrl, getBaseUrl } from "../../../../../utils"
 import { ActionTypes } from "./index"
 
 export function loadNewsFeed(memberId: string, feedUrl: string) {

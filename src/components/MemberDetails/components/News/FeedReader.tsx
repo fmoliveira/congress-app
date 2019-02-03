@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react"
 import { connect } from "react-redux"
 
-import { RequestStatusType } from "../../../reducers/requestStatus"
+import { RequestStatusType } from "../../../../reducers/requestStatus"
 import { loadNewsFeed } from "./actions"
 import {
   loadNewsFeedStatusSelector,
