@@ -1,4 +1,6 @@
 import React from "react"
+
+import { size } from "lodash"
 import shortId from "shortid"
 
 import { IFeedItem } from "../types"
@@ -10,6 +12,7 @@ interface IProps {
 
 const FeedList = ({ feed = [] }: IProps) => (
   <div>
+    {size(feed) === 0 && <div>No news shared recently.</div>}
     {feed.map(i => (
       <FeedItem key={shortId.generate()} feed={i} />
     ))}
