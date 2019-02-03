@@ -15,12 +15,7 @@ interface IProps {
   status: RequestStatusType
 }
 
-export const ListView = ({
-  listMembers,
-  members,
-  scrollToTop,
-  status
-}: IProps) => (
+const ListView = ({ listMembers, members, scrollToTop, status }: IProps) => (
   <div>
     {status !== RequestStatusType.Error && <ListHeader />}
     {status === RequestStatusType.Error && <ErrorMessage retry={listMembers} />}
@@ -32,3 +27,5 @@ export const ListView = ({
     )}
   </div>
 )
+
+export default ListView
