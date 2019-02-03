@@ -1,19 +1,15 @@
-import React, { PureComponent } from "react"
+import React from "react"
 
 import { Box } from "../index"
+import { MapDisplay } from "./MapDisplay"
 
 interface IProps {
   address: string
-  state: string
 }
 
-export class Map extends PureComponent<IProps> {
-  public render() {
-    const { address, state } = this.props
-    return (
-      <Box title="Office Location">
-        {address} {state}
-      </Box>
-    )
-  }
-}
+export const Map = ({ address }: IProps) => (
+  <Box title="Office Location">
+    {!address && <div>Office location unknown.</div>}
+    {address && <MapDisplay address={address} />}
+  </Box>
+)
