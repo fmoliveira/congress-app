@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 
 import { ControlLabel, Input, SectionTitle, Select } from "../../../_common"
+import { getSessionNumbers } from "./functions"
 
 const Container = styled.div`
   margin: 0.5em 1em;
@@ -18,15 +19,17 @@ const Hint = styled.span`
 `
 
 export interface IFilters {
+  chamber: string
   fullName: string
   party: string
-  chamber: string
+  session: number
 }
 
 const initialFilters: IFilters = {
-  chamber: "",
+  chamber: "senate",
   fullName: "",
-  party: ""
+  party: "",
+  session: 115
 }
 
 interface IProps {
@@ -74,6 +77,15 @@ const Filters = ({ onChange }: IProps) => {
           <Select onChange={updateFilter("chamber")}>
             <option value="senate">Senate</option>
             <option value="house">House of Representatives</option>
+          </Select>
+        </ControlLabel>
+        <ControlLabel description="Session">
+          <Select onChange={updateFilter("session")}>
+            {getSessionNumbers(currentFilters.chamber).map((i: number) => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
           </Select>
         </ControlLabel>
       </Container>

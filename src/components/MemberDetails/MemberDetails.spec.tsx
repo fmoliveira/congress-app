@@ -48,6 +48,7 @@ describe("MemberDetails", () => {
         roles: [
           {},
           {
+            chamber: "senate",
             committees: [{ code: "COM1", name: "Committee One" }],
             office: "116 Fancy Skyscrapper",
             state: "XYZ",
@@ -67,6 +68,7 @@ describe("MemberDetails", () => {
     expect(DetailView).toHaveBeenCalledTimes(1)
     expect(DetailView).toBeCalledWith(
       {
+        chamber: "senate",
         committees: [{ code: "COM1", name: "Committee One" }],
         info: {
           facebookAccount: "",
@@ -116,6 +118,7 @@ describe("MemberDetails", () => {
     expect(DetailView).toHaveBeenCalledTimes(1)
     expect(DetailView).toBeCalledWith(
       {
+        chamber: "",
         committees: [],
         info: {
           facebookAccount: "",
