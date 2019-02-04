@@ -55,4 +55,38 @@ describe("filterMembers", () => {
       expect(filtered).toEqual([ana])
     })
   })
+
+  describe("party", () => {
+    it("Should filter by all parties", () => {
+      const filters: any = {
+        party: ""
+      }
+      const filtered = filterMembers(members, filters)
+      expect(filtered).toEqual(members)
+    })
+
+    it("Should filter by democrats", () => {
+      const filters: any = {
+        party: "D"
+      }
+      const filtered = filterMembers(members, filters)
+      expect(filtered).toEqual([])
+    })
+
+    it("Should filter by republicans", () => {
+      const filters: any = {
+        party: "R"
+      }
+      const filtered = filterMembers(members, filters)
+      expect(filtered).toEqual([ana])
+    })
+
+    it("Should filter by independents", () => {
+      const filters: any = {
+        party: "I"
+      }
+      const filtered = filterMembers(members, filters)
+      expect(filtered).toEqual([edward])
+    })
+  })
 })

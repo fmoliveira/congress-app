@@ -35,7 +35,8 @@ class MembersList extends PureComponent<Props, IOwnState> {
 
   public state = {
     filters: {
-      fullName: ""
+      fullName: "",
+      party: ""
     }
   }
 

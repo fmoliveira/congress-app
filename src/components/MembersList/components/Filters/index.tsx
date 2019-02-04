@@ -1,10 +1,14 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
-import { ControlLabel, Input, SectionTitle } from "../../../_common"
+import { ControlLabel, Input, SectionTitle, Select } from "../../../_common"
 
 const Container = styled.div`
   margin: 0.5em 1em;
+
+  & > * {
+    margin-right: 1em;
+  }
 `
 
 const Hint = styled.span`
@@ -15,10 +19,12 @@ const Hint = styled.span`
 
 export interface IFilters {
   fullName: string
+  party: string
 }
 
 const initialFilters: IFilters = {
-  fullName: ""
+  fullName: "",
+  party: ""
 }
 
 interface IProps {
@@ -53,6 +59,14 @@ const Filters = ({ onChange }: IProps) => {
             placeholder="Type a name to filter"
             onChange={updateFilter("fullName")}
           />
+        </ControlLabel>
+        <ControlLabel description="Party">
+          <Select onChange={updateFilter("party")}>
+            <option value="">All parties</option>
+            <option value="D">Democrats</option>
+            <option value="R">Republicans</option>
+            <option value="I">Independents</option>
+          </Select>
         </ControlLabel>
       </Container>
     </div>
