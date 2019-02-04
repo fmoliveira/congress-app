@@ -1,6 +1,7 @@
 {
   "name": "u6-interview-project",
   "version": "0.1.0",
+  "author": "Filipe Oliveira <contato@fmoliveira.com.br>",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
