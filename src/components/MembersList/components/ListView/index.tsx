@@ -16,6 +16,7 @@ interface IProps {
   listMembers: () => void
   members: IMemberInfo[]
   scrollToTop: () => void
+  session: number
   status: RequestStatusType
 }
 
@@ -24,6 +25,7 @@ const ListView = ({
   listMembers,
   members,
   scrollToTop,
+  session,
   status
 }: IProps) => (
   <div>
@@ -35,7 +37,7 @@ const ListView = ({
     )}
     {status === RequestStatusType.Success && size(members) > 0 && (
       <Paginator data={members} onPageChanged={scrollToTop}>
-        {i => <ListItem key={i.id} {...i} />}
+        {i => <ListItem key={i.id} session={session} {...i} />}
       </Paginator>
     )}
   </div>
