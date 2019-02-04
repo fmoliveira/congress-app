@@ -15,6 +15,7 @@ interface IOwnProps {
   match: {
     params: {
       memberId: string
+      sessionNumber: string
     }
   }
 }
@@ -41,8 +42,12 @@ class MemberDetails extends PureComponent<Props> {
   }
 
   public render() {
-    const { details: { roles = [] } = {}, status } = this.props
-    const [, currentRole] = roles
+    const {
+      details: { roles = [] } = {},
+      match: { params: { sessionNumber = "" } = {} } = {},
+      status
+    } = this.props
+    const currentRole = roles.find(i => i.congress === sessionNumber)
     const { chamber = "", committees = [], subcommittees = [] } =
       currentRole || {}
     const info = this.getListItemInfo()
@@ -63,7 +68,11 @@ class MemberDetails extends PureComponent<Props> {
   }
 
   private getListItemInfo = () => {
-    const { details, info } = this.props
+    const {
+      details,
+      info,
+      match: { params: { sessionNumber = "" } = {} } = {}
+    } = this.props
 
     if (size(info) > 0) {
       return info
@@ -81,7 +90,7 @@ class MemberDetails extends PureComponent<Props> {
       youtubeAccount = "",
       roles = []
     } = details || {}
-    const [, currentRole] = roles
+    const currentRole = roles.find(i => i.congress === sessionNumber)
     const { office = "", state = "" } = currentRole || {}
 
     return {
