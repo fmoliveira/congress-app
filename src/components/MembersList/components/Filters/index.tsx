@@ -20,9 +20,11 @@ const Hint = styled.span`
 export interface IFilters {
   fullName: string
   party: string
+  chamber: string
 }
 
 const initialFilters: IFilters = {
+  chamber: "",
   fullName: "",
   party: ""
 }
@@ -66,6 +68,12 @@ const Filters = ({ onChange }: IProps) => {
             <option value="D">Democrats</option>
             <option value="R">Republicans</option>
             <option value="I">Independents</option>
+          </Select>
+        </ControlLabel>
+        <ControlLabel description="Chamber">
+          <Select onChange={updateFilter("chamber")}>
+            <option value="senate">Senate</option>
+            <option value="house">House of Representatives</option>
           </Select>
         </ControlLabel>
       </Container>
