@@ -23,7 +23,10 @@ export const App = () => (
           <Switch>
             <Route exact={true} path="/" component={MembersList} />
             <Route path="/list" component={MembersList} />
-            <Route path="/members/:memberId" component={MemberDetails} />
+            <Route
+              path="/sessions/:sessionNumber/members/:memberId"
+              component={MemberDetails}
+            />
             <Route component={NotFound} />
           </Switch>
         </ErrorBoundary>

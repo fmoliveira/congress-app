@@ -52,7 +52,7 @@ class MembersList extends PureComponent<Props, IOwnState> {
   public render() {
     const { status } = this.props
     const {
-      filters: { chamber }
+      filters: { chamber, session }
     } = this.state
     const members = this.getFilteredMembers()
 
@@ -64,6 +64,7 @@ class MembersList extends PureComponent<Props, IOwnState> {
           listMembers={this.listMembers}
           members={members}
           scrollToTop={this.scrollToTop}
+          session={session}
           status={status}
         />
       </div>

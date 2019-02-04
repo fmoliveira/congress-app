@@ -42,6 +42,7 @@ const Text = styled.div`
 `
 
 interface IProps {
+  session: number
   id: string
   firstName: string
   lastName: string
@@ -57,7 +58,8 @@ interface IProps {
 
 export const ListItem = withRouter<any>(
   ({
-    id,
+    session: sessionNumber,
+    id: memberId,
     firstName,
     lastName,
     gender,
@@ -69,7 +71,8 @@ export const ListItem = withRouter<any>(
     youtubeAccount,
     history
   }: IProps) => {
-    const goToDetail = () => history.push(`/members/${id}`)
+    const goToDetail = () =>
+      history.push(`/sessions/${sessionNumber}/members/${memberId}`)
     return (
       <ItemWrapper onClick={goToDetail}>
         <AvatarWrapper>
