@@ -37,7 +37,8 @@ class MembersList extends PureComponent<Props, IOwnState> {
     filters: {
       chamber: "senate",
       fullName: "",
-      party: ""
+      party: "",
+      session: 115
     }
   }
 
@@ -72,15 +73,22 @@ class MembersList extends PureComponent<Props, IOwnState> {
     filterMembers(this.props.members, this.state.filters)
 
   private listMembers = () => {
-    this.props.listMembers(115, "senate")
+    const {
+      filters: { chamber, session }
+    } = this.state
+    this.props.listMembers(session, chamber)
   }
 
   private updateFilters = (filters: IFilters) => {
-    this.setState({ filters })
+    const changedList =
+      this.state.filters.chamber !== filters.chamber ||
+      this.state.filters.session !== filters.session
 
-    if (this.state.filters.chamber !== filters.chamber) {
-      this.props.listMembers(115, filters.chamber)
-    }
+    this.setState({ filters }, () => {
+      if (changedList) {
+        this.listMembers()
+      }
+    })
   }
 
   private scrollToTop = () => {
