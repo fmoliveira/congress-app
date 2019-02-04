@@ -37,6 +37,7 @@ class MembersList extends PureComponent<Props, IOwnState> {
     filters: {
       chamber: "senate",
       fullName: "",
+      gender: "",
       party: "",
       session: 115
     }
