@@ -46,10 +46,10 @@ describe("MemberDetails", () => {
         lastName: "Sparrow",
         memberId: "M125", // we want the id to be taken from here, not from match param below
         roles: [
-          {},
           {
             chamber: "senate",
             committees: [{ code: "COM1", name: "Committee One" }],
+            congress: "115",
             office: "116 Fancy Skyscrapper",
             state: "XYZ",
             subcommittees: [{ code: "SCM2", name: "Sub-committee Two" }]
@@ -60,7 +60,7 @@ describe("MemberDetails", () => {
         youtubeAccount: "MaroonedInNassau"
       },
       info: {},
-      match: { params: { memberId: "M123" } }, // must differ from memberId above
+      match: { params: { memberId: "M123", sessionNumber: "115" } }, // must differ from memberId above
       status: "SUCCESS"
     }
     setup(props)
