@@ -1,4 +1,6 @@
 import React from "react"
+
+import { lowerCase } from "lodash"
 import styled from "styled-components"
 
 import { SmallHeader } from "../../../_common"
@@ -12,9 +14,15 @@ const HeaderWrapper = styled.div`
   padding-top: 0.5em;
 `
 
-export const ListHeader = () => (
+interface IProps {
+  chamber: string
+}
+
+export const ListHeader = ({ chamber }: IProps) => (
   <HeaderWrapper>
-    <SmallHeader>Senator</SmallHeader>
+    <SmallHeader>
+      {lowerCase(chamber) === "senate" ? "Senator" : "Representative"}
+    </SmallHeader>
     <SmallHeader>Party</SmallHeader>
     <SmallHeader>State/District</SmallHeader>
     <SmallHeader>Next Election</SmallHeader>

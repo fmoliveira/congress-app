@@ -49,12 +49,16 @@ class MembersList extends PureComponent<Props, IOwnState> {
 
   public render() {
     const { status } = this.props
+    const {
+      filters: { chamber }
+    } = this.state
     const members = this.getFilteredMembers()
 
     return (
       <div ref={this.membersListRef}>
         <Filters onChange={this.updateFilters} />
         <ListView
+          chamber={chamber}
           listMembers={this.listMembers}
           members={members}
           scrollToTop={this.scrollToTop}

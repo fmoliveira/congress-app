@@ -43,12 +43,14 @@ class MemberDetails extends PureComponent<Props> {
   public render() {
     const { details: { roles = [] } = {}, status } = this.props
     const [, currentRole] = roles
-    const { committees = [], subcommittees = [] } = currentRole || {}
+    const { chamber = "", committees = [], subcommittees = [] } =
+      currentRole || {}
     const info = this.getListItemInfo()
     const { id: memberId = "", office = "", rssUrl = "" } = info
 
     return (
       <DetailView
+        chamber={chamber}
         committees={committees}
         info={info}
         memberId={memberId}

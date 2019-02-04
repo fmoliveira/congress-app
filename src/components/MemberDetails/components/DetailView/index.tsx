@@ -51,6 +51,7 @@ export const Columns = styled.div`
 `
 
 interface IProps {
+  chamber: string
   committees: ICommittee[]
   info: IMemberInfo
   memberId: string
@@ -61,6 +62,7 @@ interface IProps {
 }
 
 const DetailView = ({
+  chamber,
   committees,
   info,
   memberId,
@@ -77,7 +79,7 @@ const DetailView = ({
       </LinkWrapper>
     </header>
 
-    <ListHeader />
+    <ListHeader chamber={chamber} />
     {status !== RequestStatusType.Success && <SkeletonItem />}
     {status === RequestStatusType.Success && <MemberInfo {...info} />}
 
