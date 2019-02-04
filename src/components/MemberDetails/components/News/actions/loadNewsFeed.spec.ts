@@ -10,6 +10,7 @@ describe("listMembers", () => {
   afterEach(() => {
     store.clearActions()
     fetchMock.restore()
+    localStorage.clear()
   })
 
   it("Should dispatch successful actions", async () => {
