@@ -35,10 +35,11 @@ const initialFilters: IFilters = {
 }
 
 interface IProps {
+  chamber: string
   onChange: (newFilters: IFilters) => void
 }
 
-const Filters = ({ onChange }: IProps) => {
+const Filters = ({ chamber, onChange }: IProps) => {
   const [currentFilters, setFilters] = useState(initialFilters)
 
   const updateFilter = (filterName: string) => (newValue: string) => {
@@ -60,7 +61,11 @@ const Filters = ({ onChange }: IProps) => {
         </Hint>
       </SectionTitle>
       <Container>
-        <ControlLabel description="Senator Name">
+        <ControlLabel
+          description={
+            chamber === "senate" ? "Senator Name" : "Representative Name"
+          }
+        >
           <Input
             type="text"
             placeholder="Type a name to filter"

@@ -58,7 +58,7 @@ class MembersList extends PureComponent<Props, IOwnState> {
 
     return (
       <div ref={this.membersListRef}>
-        <Filters onChange={this.updateFilters} />
+        <Filters chamber={chamber} onChange={this.updateFilters} />
         <ListView
           chamber={chamber}
           listMembers={this.listMembers}
