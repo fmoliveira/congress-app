@@ -3,7 +3,7 @@ import { filterMembers } from "./filterMembers"
 
 const ana: IMemberInfo = {
   firstName: "Ana",
-  gender: "female",
+  gender: "F",
   id: "A800",
   lastName: "Nobrega",
   nextElection: "2022",
@@ -13,7 +13,7 @@ const ana: IMemberInfo = {
 }
 const edward: IMemberInfo = {
   firstName: "Edward",
-  gender: "male",
+  gender: "M",
   id: "D320",
   lastName: "Kenway",
   nextElection: "1725",
@@ -84,6 +84,32 @@ describe("filterMembers", () => {
     it("Should filter by independents", () => {
       const filters: any = {
         party: "I"
+      }
+      const filtered = filterMembers(members, filters)
+      expect(filtered).toEqual([edward])
+    })
+  })
+
+  describe("party", () => {
+    it("Should filter by all genders", () => {
+      const filters: any = {
+        gender: ""
+      }
+      const filtered = filterMembers(members, filters)
+      expect(filtered).toEqual(members)
+    })
+
+    it("Should filter by females", () => {
+      const filters: any = {
+        gender: "F"
+      }
+      const filtered = filterMembers(members, filters)
+      expect(filtered).toEqual([ana])
+    })
+
+    it("Should filter by males", () => {
+      const filters: any = {
+        gender: "M"
       }
       const filtered = filterMembers(members, filters)
       expect(filtered).toEqual([edward])

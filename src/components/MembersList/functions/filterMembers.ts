@@ -12,16 +12,21 @@ export function filterMembers(
   }
 
   const filterFullName = lowerCase(filters.fullName)
-  const { party: filterParty } = filters
+  const { party: filterParty, gender: filterGender } = filters
 
   return members.filter(each => {
     const fullName = lowerCase([each.firstName, each.lastName].join(" "))
+    const { party, gender } = each
+
     if (filterFullName && !fullName.includes(filterFullName)) {
       return false
     }
 
-    const { party } = each
     if (filterParty && party !== filterParty) {
+      return false
+    }
+
+    if (filterGender && gender !== filterGender) {
       return false
     }
 
