@@ -2,6 +2,10 @@
 
 exports[`FeedList Should render without crashing 1`] = `
 <div>
-  <div />
+  <div>
+    <div>
+      No news shared recently.
+    </div>
+  </div>
 </div>
 `;
