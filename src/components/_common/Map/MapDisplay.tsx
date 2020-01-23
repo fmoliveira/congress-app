@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import { RequestStatusType } from "../../../reducers/requestStatus"
 
-const GOOGLE_MAPS_KEY = "AIzaSyA-WTkvNO8bmhes9JzIzX5UTogM40H1Ufs"
+const GOOGLE_MAPS_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 const GOOGLE_MAPS_ELEMENT_ID = "googleMapsScript"
 const GOOGLE_MAPS_CALLBACK_FN = "googleMapsLoaded"
 
