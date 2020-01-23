@@ -10,7 +10,7 @@ This application queries the [ProPublica Congress API](https://projects.propubli
 
 Clicking on members of either chambers will show all details supplied by the ProPublica's API, such as the member's party, social networks, news, office location map, along with a list of committees and sub-commitees.
 
-![Coding Exercise](assets/coding-exercise.png)
+![Congres App List View at the Homepage](assets/congress-app.png)
 
 Check out a live copy of this project at https://congressapp.surge.sh/
 
