@@ -1,6 +1,6 @@
 # Congress App
 
-![Travis Build Status](https://travis-ci.org/fmoliveira/congress-app.svg?branch=master)
+[![Build Status](https://travis-ci.org/fmoliveira/congress-app.svg?branch=master)](https://travis-ci.org/fmoliveira/congress-app)
 
 Check out a live copy of this project at https://congressapp.fmoliveira.dev
 
