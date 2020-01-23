@@ -2,7 +2,7 @@
 
 ![Travis Build Status](https://travis-ci.org/fmoliveira/congress-app.svg?branch=master)
 
-Check out a live copy of this project at https://congressapp.surge.sh/
+Check out a live copy of this project at https://congressapp.fmoliveira.dev
 
 > Disclaimer: This project is not actively maintained. It was developed for an interview test for my application to [Ubiquity6](https://ubiquity6.com/). The period requested to keep my source code private has already expired, so, I've open sourced it.
 
