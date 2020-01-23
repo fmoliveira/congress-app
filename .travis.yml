@@ -3,6 +3,7 @@ node_js:
   - 12
 before_deploy:
   - yarn build
+  - cp ./build/index.html ./build/200.html
 deploy:
   provider: surge
   skip_cleanup: true
