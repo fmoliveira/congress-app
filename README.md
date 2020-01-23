@@ -12,6 +12,16 @@ Clicking on members of either chambers will show all details supplied by the Pro
 
 ![Coding Exercise](assets/coding-exercise.png)
 
+# Development
+
+To run this project locally, follow these steps:
+
+1. Clone this repository with `git clone https://github.com/fmoliveira/congress-app.git`
+2. Make a copy of the file `.env.example` named `.env` and fill it with your credentials from ProPublica Congress API and Google Maps JavaScript API
+3. Install the dependencies with the command `yarn`
+4. Run the project with `yarn start`
+5. Access it locally at http://localhost:3000/
+
 # License
 
 MIT
