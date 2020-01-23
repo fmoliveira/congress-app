@@ -24,6 +24,8 @@ To run this project locally, follow these steps:
 4. Run the project with `yarn start`
 5. Access it locally at http://localhost:3000/
 
+If you just want to take a look on the app live, you check simply check out the live copy at https://congressapp.fmoliveira.dev/
+
 # License
 
 MIT
