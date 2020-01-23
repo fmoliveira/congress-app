@@ -12,6 +12,8 @@ Clicking on members of either chambers will show all details supplied by the Pro
 
 ![Coding Exercise](assets/coding-exercise.png)
 
+Check out a live copy of this project at https://congressapp.surge.sh/
+
 # Development
 
 To run this project locally, follow these steps:
