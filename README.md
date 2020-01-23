@@ -4,9 +4,13 @@
 
 Check out a live copy of this project at https://congressapp.fmoliveira.dev
 
-> Disclaimer: This project is not actively maintained. It was developed for an interview test for my application to [Ubiquity6](https://ubiquity6.com/). The period requested to keep my source code private has already expired, so, I've open sourced it. You can [check the challenge here](CODING EXERCISE.md).
+## Disclaimer
 
-> This project demonstrates some of my practices and style of coding a web application with React and TypeScript. Please note that this project was developed on January 2019 and I've improved several of my practices since then. I may eventually revamp the project with newest practices as well as more features from the awesome data supplied by ProPublica's API.
+This project is not actively maintained. It was developed for an interview test for my application to [Ubiquity6](https://ubiquity6.com/). The period requested to keep my source code private has already expired, so, I've open sourced it. You can [check the challenge here](CODING_EXERCISE.md).
+
+Please note that this project was developed on January 2019 and I've improved several of my practices since then. I may eventually revamp the project with newest practices as well as more features from the awesome data supplied by ProPublica's API.
+
+## Introduction
 
 This application queries the [ProPublica Congress API](https://projects.propublica.org/api-docs/congress-api/members/#lists-of-members) to list Senators and Representatives of the US government.
 
