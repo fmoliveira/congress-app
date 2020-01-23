@@ -45,7 +45,7 @@ class FeedReader extends PureComponent<Props> {
       <div>
         {status === RequestStatusType.Loading && <SkeletonNews />}
         {status === RequestStatusType.Error && (
-          <div>Failed to load news feed!</div>
+          <div>Sorry, we were unable to get news about this member!</div>
         )}
         {status === RequestStatusType.Success && <FeedList feed={feed} />}
       </div>
